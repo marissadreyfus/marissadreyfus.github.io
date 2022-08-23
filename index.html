@@ -5,7 +5,7 @@
         <style>
             body {
                 background: rgb(12, 44, 65);
-                color: rgb(53, 53, 53);
+                color: rgb(0, 0, 0);
                 padding: 10px;
                 font-family: arial;
             }
@@ -71,21 +71,24 @@
         <div id = "all-contents">
             <nav>
                 <h1>Marissa's Website</h1>
-                <ul>
-                    <li><a href = "index.html">Home</a></li>
-                    <li><a href = "portfolio.html">Portfolio</a></li>
+                <ul id="nav-ul">
+                    <li class="nav-li">
+                        <a href = "index.html">Home</a>
+                    </li>
+                    <li class="nav-li">
+                        <a href = "portfolio.html">Portfolio</a>
+                    </li>
                 </ul>
             </nav>
             <main>
                      <!-- Sidebar section -->
-                 <div>
-                    <img src="images/placeholder.png">
+                 <div class="sidebar">
+                    <img class="sidebar-img" src="images/placeholder.png">
                  </div>
                     <!-- Content section -->
                  <div class="content">
                     <h2>Marissa Dreyfus</h2>
                     <p>Student at Northshore High</p>
-                 </div>
                  <!-- Interests section -->
                  <div id = "interests">
                    <h3>Interests!</h3>
@@ -94,6 +97,7 @@
                         <li>Music</li>
                         <li>Art</li>
                     </ul>
+                 </div>
                  </div>
             </main>
         </div>
