@@ -5,13 +5,13 @@
   let collectable = window.opspark.collectable;
 
   let type = {
-    collectable1: { assetKey: "1", points: 50 },
-    collectable2: { assetKey: "2", points: 50 },
-    collectable3: { assetKey: "3", points: 50 },
-    collectable4: { assetKey: "4", points: 50 },
-    collectable5: { assetKey: "5", points: 50 },
-    collectable6: { assetKey: "6", points: 50 },
-    collectable7: { assetKey: "7", points: 50 },
+    collectable1: { assetKey: "collectable1", points: 50 },
+    collectable2: { assetKey: "collectable2", points: 50 },
+    collectable3: { assetKey: "collectable3", points: 50 },
+    collectable4: { assetKey: "collectable4", points: 50 },
+    collectable5: { assetKey: "collectable5", points: 50 },
+    collectable6: { assetKey: "collectable6", points: 50 },
+    collectable7: { assetKey: "collectable7", points: 50 },
   };
 
   window.opspark.collectable.type = type;
@@ -41,13 +41,13 @@
     // ALL YOUR CODE GOES BELOW HERE ///////////////////////////////////////
 
     // example:
-    createCollectable(type.collectable1, 795, 150);
-    createCollectable(type.collectable2, 825, 400);
-    createCollectable(type.collectable3, 125, 200);
-    createCollectable(type.collectable4, 870, 637);
-    createCollectable(type.collectable5, 345, 125);
-    createCollectable(type.collectable6, 140, 465);
-    createCollectable(type.collectable7, 600, 50);
+    createCollectable(type.collectable1, 785, 140);
+    createCollectable(type.collectable2, 815, 390);
+    createCollectable(type.collectable3, 115, 190);
+    createCollectable(type.collectable4, 860, 627);
+    createCollectable(type.collectable5, 335, 115);
+    createCollectable(type.collectable6, 130, 455);
+    createCollectable(type.collectable7, 590, 40);
 
     // ALL YOUR CODE GOES ABOVE HERE ///////////////////////////////////////
     ////////////////////////////////////////////////////////////////////////

@@ -28,6 +28,11 @@
 
     // example:
     createCannon("top", 450);
+    createCannon("top", 200, 500);
+    createCannon("top", 800, 1000);
+    createCannon("bottom", 300, 750);
+    createCannon("bottom", 500, 1500);
+    createCannon("bottom", 700, 950);
 
     // ALL YOUR CODE GOES ABOVE HERE ///////////////////////////////////////
     ////////////////////////////////////////////////////////////////////////
