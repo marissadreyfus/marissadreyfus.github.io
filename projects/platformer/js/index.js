@@ -21,9 +21,10 @@ $(document).ready(function () {
         
         opspark.player.init(game);
         
-        const textOpts = { fontSize: '32px', fill: '#000' };
+        const textOpts = { fontSize: '20px', fill: '#000' };
         game.score = game.add.text(16, 16, 'Score: 0', textOpts);
-        game.lives = game.add.text(16, 70, 'Lives: ' + lives, textOpts);
+        game.lives = game.add.text(16, 50, 'Lives: ' + lives, textOpts);
+        game.win = game.add.text(16, 94, 'Goal: Collect Every Collectable - It will not end the game once you collect everything', textOpts);
     }
 
 
