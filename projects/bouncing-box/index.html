@@ -15,7 +15,7 @@
 			display: block;
 			position: absolute;
 			top: 0px;
-			left: 0px;  /* <--- Change me! */
+			left: 0px;
 		}
 		.board{
 			height: 100vh;
@@ -65,6 +65,7 @@
 			
 			var positionX = 0;
 			var points = 0;
+			var speed = 3;
 			
 			/* 
 			This Function will be called 20 times/second. Each time it is called,
@@ -72,8 +73,14 @@
 			turn it around! 
 			*/
 			function update() {
-				moveBoxTo(positionX++);
-
+				positionX += speed;
+				moveBoxTo(positionX);
+				if (positionX >= boardWidth) {
+					speed = -speed;
+				} 
+				if (positionX <= 0) {
+					speed = -speed;
+				}
 			};
 
 			/* 
@@ -83,8 +90,12 @@
 			*/
 			function handleBoxClick() {
 				
-				positionX = 0;
-				changeBoxText(1);
+				if (box.on = true) {
+					points = points + 1;
+					speed = speed * 2;
+				}
+				changeBoxText(points);
+				
 
 			};
 		})();
