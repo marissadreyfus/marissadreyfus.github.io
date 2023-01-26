@@ -8,7 +8,7 @@
 		.box {
 			width: 70px;
 			height: 70px;
-			background-color: teal;
+			background-color: rgb(25, 101, 172);
 			font-size: 300%;
 			text-align: center;
 			user-select: none;
@@ -40,6 +40,7 @@
 			var box = jQuery('.box');	// reference to the HTML .box element
 			var board = jQuery('.board');	// reference to the HTML .board element
 			var boardWidth = board.width();	// the maximum X-Coordinate of the screen
+			var boardHeight = jQuery(window).height(); 
 
 			// Every 50 milliseconds, call the update Function (see below)
 			setInterval(update, 50);
@@ -48,9 +49,11 @@
 			box.on('click', handleBoxClick);
 
 			// moves the Box to a new position on the screen along the X-Axis
-			function moveBoxTo(newPositionX) {
+			function moveBoxTo(newPositionX, newPositionY) {
 				box.css("left", newPositionX);
+				box.css("top", newPositionY);
 			}
+
 
 			// changes the text displayed on the Box
 			function changeBoxText(newText) {
@@ -64,8 +67,12 @@
 			// TODO 2 - Variable declarations 
 			
 			var positionX = 0;
+			var positionY = 0;
 			var points = 0;
-			var speed = 3;
+			var speedX = 3;
+			var speedY = 3;
+			var randNumX;
+			var randNumY;
 			
 			/* 
 			This Function will be called 20 times/second. Each time it is called,
@@ -73,13 +80,18 @@
 			turn it around! 
 			*/
 			function update() {
-				positionX += speed;
-				moveBoxTo(positionX);
+				positionX += speedX;
+				moveBoxTo(positionX, positionY);
 				if (positionX >= boardWidth) {
-					speed = -speed;
-				} 
-				if (positionX <= 0) {
-					speed = -speed;
+					speedX = -speedX;
+				} else if (positionX <= 0) {
+					speedX = -speedX;
+				}
+				positionY += speedY;
+				if (positionY >= boardHeight) {
+					speedY = -speedY;
+				} else if (positionY <= 0) {
+					speedY = -speedY;
 				}
 			};
 
@@ -90,10 +102,22 @@
 			*/
 			function handleBoxClick() {
 				
-				if (box.on = true) {
-					points = points + 1;
-					speed = speed * 2;
+				randNumX = Math.random() * boardWidth;
+				points = points + 1;
+				if (speedX > 0) {
+					speedX = speedX + points;
+				} else if (speedX < 0) {
+					speedX = speedX - points;
 				}
+				positionX = randNumX;
+				randNumY = Math.random() * boardHeight;
+				if (speedY > 0) {
+					speedY = speedY + points;
+				} else if (speedY < 0) {
+					speedY = speedY - points;
+				}
+				positionY = randNumY;
+				
 				changeBoxText(points);
 				
 
