@@ -328,3 +328,4 @@
         return asset;
     }
 })(window);
+//player creation here, look through it and see what you need
