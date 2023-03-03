@@ -1,8 +1,8 @@
 body {
-    background: url("../img/just-for-the-funny.png") no-repeat center center fixed;
-    background-color: #000000;
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    -o-background-size: cover;
-    background-size: cover;
-}
+    background: url("../img/just-for-the-funny.png") no-repeat center center fixed; /*adds the background image in the correct spot*/
+    background-color: #000000;/*background color (basically unused, it's covered by the background image*/
+    -webkit-background-size: cover;/*size of the background*/
+    -moz-background-size: cover;/*size of the background but again*/
+    -o-background-size: cover;/*size of the background 3*/
+    background-size: cover;/*size of background 4*/
+} /*the background*/
