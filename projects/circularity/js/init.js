@@ -55,7 +55,7 @@ var init = function (window) {
                 var indVal = circles[i]; //indVal is supposed to mean "Individual Value"
                 physikz.updatePosition(indVal); //updates circle's position. changed "circles[i]" to variable "indVal" to work for each circle and moved it here so it actually worked
                 game.checkCirclePosition(indVal); //checks circle's position. changed "circles[i]" to variable "indVal" to work for each circle and moved it here so it actually worked
-            }
+            }//the movement loop
         
         }
     
@@ -67,21 +67,21 @@ var init = function (window) {
         game.checkCirclePosition = function(circle) {
 
             // if the circle has gone past the RIGHT side of the screen then place it on the LEFT
-            if ( circle.x > canvas.width + circle.radius) {
-                circle.x = 0 - circle.radius;
+            if ( circle.x > canvas.width + circle.radius) {//if the circle goes past the right side of the screen..
+                circle.x = 0 - circle.radius;//..it's placed at the left of the screen
             }
             
             // TODO 6 : YOUR CODE STARTS HERE //////////////////////
             
-            if ( circle.x < 0 - circle.radius ) {
-                circle.x = canvas.width + circle.radius;//goes past the left, places it on the right
-            }
-            if ( circle.y > canvas.height + circle.radius) {
-                circle.y = 0 - circle.radius;//goes past the top, places it at the bottom
-            }
-            if ( circle.y < 0 - circle.radius ) {
-                circle.y = canvas.height + circle.radius;//goes past the bottom, places it at the top
-            }
+            if ( circle.x < 0 - circle.radius ) { //if the circle goes past the left side of the screen..
+                circle.x = canvas.width + circle.radius; //..it's placed at the right of the screen
+            }//goes past the left, places it on the right
+            if ( circle.y > canvas.height + circle.radius) {//if the circle goes past the top of the screen..
+                circle.y = 0 - circle.radius;//..it's placed at the bottom of the screen
+            }//goes past the top, places it at the bottom
+            if ( circle.y < 0 - circle.radius ) {//if the circle goes past the bottom of the screen..
+                circle.y = canvas.height + circle.radius;//..it's placed at the top of the screen
+            }//goes past the bottom, places it at the top
 
             // YOUR TODO 6 CODE ENDS HERE //////////////////////////
         }
