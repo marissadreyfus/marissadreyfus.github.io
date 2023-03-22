@@ -37,7 +37,7 @@ var background = function (window) {
             // TODO: 2 - Part 2
             // this fills the background with a obnoxious yellow
             // you should modify this to suit your game
-            var backgroundFill = draw.rect(canvasWidth,groundY,'black');
+            var backgroundFill = draw.rect(canvasWidth,groundY,'grey');
             background.addChild(backgroundFill);
             
             // TODO: 3 - Add a moon and starfield
@@ -57,20 +57,21 @@ var background = function (window) {
             background.addChild(moon); //adds "moon" as a child of "background"
             
             // TODO 5: Part 1 - Add buildings!     Q: This is before TODO 4 for a reason! Why? A: this allows the tree to be in front of the buildings
-            for (var i = 0; i < 5; i++) {
-                var buildingHeight = 250 + (100 * Math.random()); //sets building height - work in progress, figure out the height thing
+            for (var i = 0; i < 20; i++) {                                                      //remember to mess with building appearances whenever finished with main build
+                var buildingHeight = 250 + (100 * Math.random()); //sets building height
+                var loopColors = i % 5; //allows the colors to loop so I don't have to put more than 5 colors
                 var buildingColors = ["lightgreen", "lightblue", "pink", "lightgrey", "tan"]; //sets building color
                 var buildingOutlines = ["darkgreen", "darkblue", "darkred", "darkgrey", "brown"]; //sets building outline based on color
-                var building = draw.rect(75, buildingHeight, buildingColors[i], buildingOutlines[i], 3); //draws buildings
-                building.x = 100 * i; //sets building x-value
+                var building = draw.rect(75, buildingHeight, buildingColors[loopColors], buildingOutlines[loopColors], 3); //draws buildings
+                building.x = 105 * i; //sets building x-value
                 building.y = groundY - buildingHeight; //sets building y-value
                 background.addChild(building); //adds building as a child of background
                 buildings.push(building); //pushes each building into "buildings" array
-              }
+              } 
             // TODO 4: Part 1 - Add a tree
             tree = draw.bitmap("img/tree.png"); //uses bitmap to draw a tree and stores it in variable "tree"
             tree.x = canvasWidth; //x-position of tree
-            tree.y = groundY - 230; //y-position of tree
+            tree.y = groundY - 200; //y-position of tree
             background.addChild(tree); //adds tree as a child of background
             
         } // end of render function - DO NOT DELETE

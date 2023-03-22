@@ -28,11 +28,24 @@ var level01 = function (window) {
         // TODO 6 and on go here
         // BEGIN EDITING YOUR CODE HERE
 
-        var hitZoneSize = 25;
-        var damageFromObstacle = 10;
-        var sawBladeHitZone = game.createObstacle(hitZoneSize, damageFromObstacle);
-        
-        
+        function createObstacle (xVal, yVal) {
+            var hitZoneSize = 25; //assigns hitzone size to 25
+            var damageFromObstacle = 10; //assigns amount of damage taken from hitzone
+            var sawBladeHitZone = game.createObstacle(hitZoneSize, damageFromObstacle); //creates obstacle
+            sawBladeHitZone.x = xVal; //assigns hitzone an x-value
+            sawBladeHitZone.y = yVal; //assigns hitzone a y-value
+            game.addGameItem(sawBladeHitZone); //adds obstacle to game
+            var obstacleImage = draw.bitmap("img/sawblade.png");
+            obstacleImage.x = -35;
+            obstacleImage.y = -35;
+            obstacleImage.scaleX = 1.5;
+            obstacleImage.scaleY = 1.5;
+            sawBladeHitZone.addChild(obstacleImage);
+        }
+
+        createObstacle(400, groundY - 125);
+        createObstacle(600, groundY - 10);
+        createObstacle(800, groundY - 65);
         // DO NOT EDIT CODE BELOW HERE
     }
 };
