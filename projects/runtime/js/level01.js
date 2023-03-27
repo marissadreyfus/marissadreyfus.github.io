@@ -16,14 +16,14 @@ var level01 = function (window) {
             "number": 1, 
             "speed": -3,
             "gameItems": [
-                { "type": "sawblade", "x": 1000, "y": groundY - (100 * Math.random())},
-                { "type": "sawblade", "x": 10000, "y": groundY - (5 * Math.random())},
-                { "type": "sawblade", "x": 100000, "y": groundY - (100 * Math.random())},
+                { "type": "obstacle", "x": 1000, "y": groundY - 110, "damage": 10, "image": "img/star.png"},
+                { "type": "obstacle", "x": 3000, "y": groundY - 5, "damage": 10, "image": "img/star.png"},
+                { "type": "obstacle", "x": 6000, "y": groundY - 100, "damage": 10, "image": "img/star.png"},
 
-                { "type": "enemy", "x": 2000, "y": groundY - (100 * Math.random()), "color": "red" },
-                { "type": "enemy", "x": 20000, "y": groundY - (100 * Math.random()), "color": "red" },
+                { "type": "enemy", "x": 2000, "y": groundY - 50, "color": "red" },
+                { "type": "enemy", "x": 4000, "y": groundY - 40, "color": "red" },
 
-                { "type": "reward", "x": 5000, "y": groundY - (100 * Math.random()) },
+                { "type": "reward", "x": 5000, "y": groundY - 100},
             ]
         };
         window.levelData = levelData;
@@ -33,19 +33,20 @@ var level01 = function (window) {
         // TODO 6 and on go here
         // BEGIN EDITING YOUR CODE HERE
 
-        function createSawblade (xVal, yVal) {
+        function createObstacle (x, y, damage, image) {
             var hitZoneSize = 25; //assigns hitzone size to 25
-            var damageFromObstacle = 10; //assigns amount of damage taken from hitzone
-            var sawBladeHitZone = game.createObstacle(hitZoneSize, damageFromObstacle); //creates obstacle
-            sawBladeHitZone.x = xVal; //assigns hitzone an x-value
-            sawBladeHitZone.y = yVal; //assigns hitzone a y-value
-            game.addGameItem(sawBladeHitZone); //adds obstacle to game
-            var sawbladeImage = draw.bitmap("img/sawblade.png"); //assigns an image to obstacle
-            sawbladeImage.x = -35; //changes x-value of image
-            sawbladeImage.y = -35; //changes y-value of image
-            sawbladeImage.scaleX = 1.5; //changes horizontal image scale 
-            sawbladeImage.scaleY = 1.5; //changes vertical image scale 
-            sawBladeHitZone.addChild(sawbladeImage); //adds image as a child of sawBladeHitZone
+            var damageFromObstacle = damage; //assigns amount of damage taken from hitzone
+            var obstacleHitZone = game.createObstacle(hitZoneSize, damageFromObstacle); //creates obstacle
+            obstacleHitZone.x = x; //assigns hitzone an x-value
+            obstacleHitZone.y = y; //assigns hitzone a y-value
+            obstacleHitZone.rotationalVelocity = -5;
+            game.addGameItem(obstacleHitZone); //adds obstacle to game
+            var obstacleImage = draw.bitmap(image); //assigns an image to obstacle
+            obstacleImage.x = -34; //changes x-value of image
+            obstacleImage.y = -34; //changes y-value of image
+            obstacleImage.scaleX = 1.7; //changes horizontal image scale 
+            obstacleImage.scaleY = 1.7; //changes vertical image scale 
+            obstacleHitZone.addChild(obstacleImage); //adds image as a child of obstacleHitZone
         }
 
         
@@ -89,8 +90,8 @@ var level01 = function (window) {
             for (var i = 0; i < levelData.gameItems.length; i++) {
                 var gameItem = levelData.gameItems[i];
 
-                if (gameItem.type === "sawblade") {
-                    createSawblade(gameItem.x, gameItem.y);
+                if (gameItem.type === "obstacle") {
+                    createObstacle(gameItem.x, gameItem.y, gameItem.damage, gameItem.image);
                 } else if (gameItem.type === "enemy") {
                     createEnemy(gameItem.x, gameItem.y);
                 } else if (gameItem.type === "reward") {

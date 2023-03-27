@@ -62,18 +62,17 @@ var background = function (window) {
                 var loopColors = i % 5; //allows the colors to loop so I don't have to put more than 5 colors
                 var buildingColors = ["#7499a1", "#929899", "#c5c5c5", "#af8080", "#aa765e"]; //sets building color
                 var buildingOutlines = ["#2f464b", "#515859", "#565656", "#5f4646", "#614133"]; //sets building outline based on color
-                var windowColors = ["#ffe88f", "#28251a"]; //sets color of windows - either lights on or lights off (doesn't do anything yet)
                 var building = draw.rect(75, buildingHeight, buildingColors[loopColors], buildingOutlines[loopColors], 3); //draws buildings
                 building.x = 105 * i; //sets building x-value
                 building.y = groundY - buildingHeight; //sets building y-value
                 background.addChild(building); //adds building as a child of background
                 buildings.push(building); //pushes each building into "buildings" array
               } 
-            // TODO 4: Part 1 - Add a tree
-            tree = draw.bitmap("img/tree.png"); //uses bitmap to draw a tree and stores it in variable "tree"
+            // TODO 4: Part 1 - Add a tree (commented out, doesn't fit with theme)
+            /*tree = draw.bitmap("img/tree.png"); //uses bitmap to draw a tree and stores it in variable "tree"
             tree.x = canvasWidth; //x-position of tree
             tree.y = groundY - 200; //y-position of tree
-            background.addChild(tree); //adds tree as a child of background
+            background.addChild(tree); //adds tree as a child of background*/
             
         } // end of render function - DO NOT DELETE
         
@@ -86,11 +85,11 @@ var background = function (window) {
             var canvasHeight = app.canvas.height;
             var groundY = ground.y;
             
-            // TODO 4: Part 2 - Move the tree!
-            tree.x = tree.x - 3; //moves the tree to the left
+            // TODO 4: Part 2 - Move the tree! (commented out, tree doesn't fit with theme)
+            /*tree.x = tree.x - 3; //moves the tree to the left
             if (tree.x < -200) {
                 tree.x = canvasWidth; //teleports tree back to the right side of the screen
-            }
+            }*/
             
             // TODO 5: Part 2 - Parallax
             for (var i = 0; i < buildings.length; i++) {
