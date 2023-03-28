@@ -49,15 +49,21 @@ var background = function (window) {
                 background.addChild(circle); //adds circle as child to background
             }//loop draws 100 circles
 
-            var moon = draw.bitmap("img/moon.png"); //draws the moon using "draw.bitmap" and stores it in "moon"
+            /*var moon = draw.bitmap("img/moon.png"); draws the moon using "draw.bitmap" and stores it in "moon" (replaced with earth image)
             moon.x = canvasWidth - 300; //adds an x value to "moon"
             moon.y = groundY - 450; //adds a y value to "moon"
             moon.scaleX = 0.5; //scales the moon's x-value
             moon.scaleY = 0.5; //scales the moon's y-value
-            background.addChild(moon); //adds "moon" as a child of "background"
+            background.addChild(moon); //adds "moon" as a child of "background" */
+            var earth = draw.bitmap("img/earth.png"); //draws the earth using draw.bitmap and stores it in "earth"
+            earth.x = canvasWidth - 300; //adds an x value to "earth"
+            earth.y = groundY - 400; //adds a y value to "earth"
+            earth.scaleX = 1.5; //scales the earth's x-value
+            earth.scaleY = 1.5; //scales the earth's y-value
+            background.addChild(earth); //adds "earth" as a child of "background"
             
             // TODO 5: Part 1 - Add buildings!     Q: This is before TODO 4 for a reason! Why? A: this allows the tree to be in front of the buildings
-            for (var i = 0; i < 20; i++) {                                                      //remember to mess with building appearances whenever finished with main build
+            /*for (var i = 0; i < 20; i++) {                                                      
                 var buildingHeight = 250 + (100 * Math.random()); //sets building height
                 var loopColors = i % 5; //allows the colors to loop so I don't have to put more than 5 colors
                 var buildingColors = ["#7499a1", "#929899", "#c5c5c5", "#af8080", "#aa765e"]; //sets building color
@@ -67,9 +73,12 @@ var background = function (window) {
                 building.y = groundY - buildingHeight; //sets building y-value
                 background.addChild(building); //adds building as a child of background
                 buildings.push(building); //pushes each building into "buildings" array
-              } 
+              } */ //didn't fit with theme - replaced with some sort of satellite/space-ship/UFO (undecided)
+
+
+
             // TODO 4: Part 1 - Add a tree (commented out, doesn't fit with theme)
-            /*tree = draw.bitmap("img/tree.png"); //uses bitmap to draw a tree and stores it in variable "tree"
+            /*var tree = draw.bitmap("img/tree.png"); //uses bitmap to draw a tree and stores it in variable "tree"
             tree.x = canvasWidth; //x-position of tree
             tree.y = groundY - 200; //y-position of tree
             background.addChild(tree); //adds tree as a child of background*/
@@ -91,14 +100,17 @@ var background = function (window) {
                 tree.x = canvasWidth; //teleports tree back to the right side of the screen
             }*/
             
+            
             // TODO 5: Part 2 - Parallax
-            for (var i = 0; i < buildings.length; i++) {
+            /*for (var i = 0; i < buildings.length; i++) {
                 var building = buildings[i]; //sets a variable for each individual building
                 building.x = building.x - 1; //moves the building
                 if (building.x < -200) {
                     building.x = canvasWidth; //teleports building back to the right side of the screen
                 }
-              }
+              }*/ //removed with buildings
+            
+
 
         } // end of update function - DO NOT DELETE
         
