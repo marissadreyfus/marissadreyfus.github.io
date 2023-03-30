@@ -33,7 +33,7 @@ var level01 = function (window) {
         // TODO 6 and on go here
         // BEGIN EDITING YOUR CODE HERE
 
-        function createObstacle (x, y, damage, image) {
+        function createObstacle (x, y, damage, image, canBreak) {
             var hitZoneSize = 25; //assigns hitzone size to 25
             var damageFromObstacle = damage; //assigns amount of damage taken from hitzone
             var obstacleHitZone = game.createObstacle(hitZoneSize, damageFromObstacle); //creates obstacle
@@ -47,13 +47,19 @@ var level01 = function (window) {
             obstacleImage.scaleX = 1.7; //changes horizontal image scale 
             obstacleImage.scaleY = 1.7; //changes vertical image scale 
             obstacleHitZone.addChild(obstacleImage); //adds image as a child of obstacleHitZone
+
+            if (canBreak === true) {
+                obstacle.onProjectileCollision = function () {
+                    obstacle.fadeOut();
+                }
+            } 
         }
 
         
 
-        function createEnemy (x, y, color) {
+        function createEnemy (x, y, image, healthLost, scoreAdded) {
             var enemy = game.createGameItem("enemy", 25); //creates enemy
-            var gameEnemy = draw.rect(50, 50, color); //creates singular enemy
+            var gameEnemy = draw.bitmap(image);//creates singular enemy
             gameEnemy.x = -25; //enemy x-value
             gameEnemy.y = -25; //enemy y-value
             enemy.x = x;
@@ -62,17 +68,17 @@ var level01 = function (window) {
             game.addGameItem(enemy);
             enemy.velocityX = -2;
             enemy.onPlayerCollision = function () {
-                game.changeIntegrity(-10)
+                game.changeIntegrity(healthLost)
                 enemy.fadeOut();
             }
             enemy.onProjectileCollision = function () {
-                game.increaseScore(50);
+                game.increaseScore(scoreAdded);
                 enemy.fadeOut();
             }
         }
-        function createReward (x, y) {
+        function createReward (x, y, image, pointsGiven, healthGiven) {
             var reward = game.createGameItem("reward", 25); //creates reward
-            var gameReward = draw.rect(50, 50); //creates singular reward
+            var gameReward = draw.bitmap(image); //creates singular reward
             gameReward.x = -25; //reward x-value
             gameReward.y = -25; //reward y-value
             reward.x = x; //x-value of reward
@@ -81,8 +87,8 @@ var level01 = function (window) {
             game.addGameItem(reward); //adds reward to game
             reward.velocityX = -2; //allows reward to move
             reward.onPlayerCollision = function () {
-                game.changeIntegrity(10); //increases health
-                game.increaseScore(100); //increases points
+                game.changeIntegrity(healthGiven); //increases health
+                game.increaseScore(pointsGiven); //increases points
                 reward.fadeOut(); //removes reward
             } //what happens when reward collides with the player
         }
