@@ -15,16 +15,16 @@ var level01 = function (window) {
             "name": "Out of this World",
             "number": 1, 
             "speed": -3,
-            "gameItems": [ //using these to actually test the items before actually putting in the actual positions. x-positions will be adjusted
-                { "type": "obstacle", "x": 1000, "y": groundY - 110, "damage": 10, "image": "img/star.png", "rotateVelocity": -5, "obstScaleX": 1.7, "obstScaleY": 1.7, "obstImgX": -34, "obstImgY": -34  },
-                { "type": "obstacle", "x": 1100, "y": groundY - 5, "damage": 5, "image": "img/small_rocks.png", "rotateVelocity": 0, "obstScaleX": 0.7, "obstScaleY": 0.7, "obstImgX": -75, "obstImgY": 0  },
-                { "type": "asteroid", "x": 1200, "y": groundY - 110 },
-                { "type": "obstacle", "x": 1300, "y": groundY-10, "damage": 100, "image": "img/breakable_rock.png", "rotateVelocity": 0, "obstScaleX": 0.7, "obstScaleY": 0.7, "obstImgX": -50, "obstImgY": -50  },
-
-                { "type": "enemy", "x": 1400, "y": groundY - 50, "image": "img/alien_in_ufo.png", "healthLost": -25, "scoreAdded": 50, "enemyScaleX": 0.5, "enemyScaleY": 0.5, "enmImgX": -34, "enmImgY": -34  },
-                { "type": "enemy", "x": 1500, "y": groundY - 40, "image": "img/UFO.png", "healthLost": -100, "scoreAdded": 1000, "enemyScaleX": 0.5, "enemyScaleY": 0.5, "enmImgX": -34, "enmImgY": -34 },
-                { "type": "enemy", "x": 1600, "y": groundY - 50, "image": "img/UFO.png", "healthLost": -10, "scoreAdded": 10, "enemyScaleX": 0.1, "enemyScaleY": 0.1, "enmImgX": -34, "enmImgY": -34   },
-                { "type": "enemy", "x": 1700, "y": groundY - 40, "image": "img/star.png", "healthLost": -25, "scoreAdded": 25, "enemyScaleX": 1.7, "enemyScaleY": 1.7, "enmImgX": -34, "enmImgY": -34   },
+            "gameItems": [ //not a completely finished game - I plan on adding more to it after the "finished" product is turned in just for fun
+                { "type": "obstacle", "obstHitZone": 25, "x": 1000, "y": groundY - 110, "damage": 10, "image": "img/star.png", "rotateVelocity": -5, "obstScaleX": 1.7, "obstScaleY": 1.7, "obstImgX": -34, "obstImgY": -34  },
+                { "type": "obstacle", "obstHitZone": 50, "x": 1100, "y": groundY, "damage": 5, "image": "img/small_rocks.png", "rotateVelocity": 0, "obstScaleX": 0.7, "obstScaleY": 0.7, "obstImgX": -75, "obstImgY": 0  },
+                { "type": "asteroid", "asteroidHitZone": 100, "x": 1200, "y": -15, "damage": 50, "image": "img/asteroid.png", "spin": -2, "imgScale": 0.5, "imgX": -103.25, "imgY": -96  },
+                
+                { "type": "enemy", "enmHitZone": 75, "x": 1300, "y": groundY - 50, "image": "img/breakable_rock.png", "healthLost": -100, "scoreAdded": 0, "enemyScaleX": 0.7, "enemyScaleY": 0.7, "enmImgX": -80, "enmImgY": -50  },
+                { "type": "enemy", "enmHitZone": 30, "x": 1400, "y": groundY - 50, "image": "img/alien_in_ufo.png", "healthLost": -25, "scoreAdded": 50, "enemyScaleX": 0.2, "enemyScaleY": 0.2, "enmImgX": -50, "enmImgY": -34  },
+                { "type": "enemy", "enmHitZone": 75, "x": 1500, "y": groundY - 120, "image": "img/UFO.png", "healthLost": -100, "scoreAdded": 1000, "enemyScaleX": 0.5, "enemyScaleY": 0.5, "enmImgX": -135, "enmImgY": -50 },
+                { "type": "enemy", "enmHitZone": 25, "x": 1600, "y": groundY - 50, "image": "img/UFO.png", "healthLost": -10, "scoreAdded": 10, "enemyScaleX": 0.1, "enemyScaleY": 0.1, "enmImgX": -28, "enmImgY": -20   },
+                { "type": "enemy", "enmHitZone": 25, "x": 1700, "y": groundY - 40, "image": "img/star.png", "healthLost": -25, "scoreAdded": 25, "enemyScaleX": 1.7, "enemyScaleY": 1.7, "enmImgX": -34, "enmImgY": -34   },
 
                 { "type": "reward", "x": 1800, "y": groundY - 100, "image": "img/pink_orb.png", "pointsGiven": 15, "healthGiven": 15, "rewardScaleX": 0.3, "rewardScaleY": 0.3, "rwdImgX": -38, "rwdImgY": -31  },
                 { "type": "reward", "x": 1900, "y": groundY - 100, "image": "img/blue_orb.png", "pointsGiven": 30, "healthGiven": 25, "rewardScaleX": 0.3, "rewardScaleY": 0.3, "rwdImgX": -38, "rwdImgY": -31 },
@@ -39,8 +39,8 @@ var level01 = function (window) {
         // TODO 6 and on go here
         // BEGIN EDITING YOUR CODE HERE
 
-        function createObstacle (x, y, damage, image, canBreak, rotateVelocity, obstScaleX, obstScaleY, obstImgX, obstImgY) { 
-            var hitZoneSize = 25; //assigns hitzone size to 25
+        function createObstacle (obstHitZone, x, y, damage, image, rotateVelocity, obstScaleX, obstScaleY, obstImgX, obstImgY) { 
+            var hitZoneSize = obstHitZone; //assigns hitzone size to 25
             var damageFromObstacle = damage; //assigns amount of damage taken from hitzone
             var obstacleHitZone = game.createObstacle(hitZoneSize, damageFromObstacle); //creates obstacle
             obstacleHitZone.x = x; //assigns hitzone an x-value
@@ -53,37 +53,29 @@ var level01 = function (window) {
             obstacleImage.scaleX = obstScaleX; //changes horizontal image scale 
             obstacleImage.scaleY = obstScaleY; //changes vertical image scale 
             obstacleHitZone.addChild(obstacleImage); //adds image as a child of obstacleHitZone
-
-            if (canBreak === true) {
-                createObstacle.onProjectileCollision = function () {
-                    createObstacle.fadeOut(); //removes obstacle if hit by projectile
-                }
-            } //if the object can "break" or not
-            if (image === "img/star.png") {
-                hitZoneSize = 50;
-            }//changes hitzone of specific enemy
         }
 
-        function createAsteroid (x, y) {
-            var asteroid = game.createGameItem("asteroid", 400); //creates asteroid
-            var gameAsteroid = draw.bitmap("img/asteroid.png");//creates singular asteroid
-            gameAsteroid.x = -103.25; //asteroid image x-value
-            gameAsteroid.y = -96; //asteroid image y-value
-            gameAsteroid.scaleX = 0.5; //asteroid image x-scale
-            gameAsteroid.scaleY = 0.5; //asteroid image y-scale
+        function createAsteroid (asteroidHitZone, x, y, damage, image, velocityX, velocityY, spin, imgScale, imgX, imgY) {
+            var asteroid = game.createGameItem("asteroid", asteroidHitZone); //creates asteroid
+            var gameAsteroid = draw.bitmap(image);//creates singular asteroid
+            gameAsteroid.x = imgX; //asteroid image x-value
+            gameAsteroid.y = imgY; //asteroid image y-value
+            gameAsteroid.scaleX = imgScale; //asteroid image x-scale
+            gameAsteroid.scaleY = imgScale; //asteroid image y-scale
             asteroid.x = x; //asteroid x-value
             asteroid.y = y; //asteroid y-value
             asteroid.addChild(gameAsteroid); //adds gameAsteroid as a child of asteroid
             game.addGameItem(asteroid);//adds asteroid to game
-            asteroid.velocityX = -2;//asteroid velocity
+            asteroid.velocityX = -2;//asteroid x-velocity
+            asteroid.velocityY = 2;//asteroid y-velocity
             gameAsteroid.rotationalVelocity = -2; //spiiiiin
             asteroid.onPlayerCollision = function () {
                 game.changeIntegrity(-50);//lowers health
             }//what happens when player collides with asteroid
         }
 
-        function createEnemy (x, y, image, healthLost, scoreAdded, enemyScaleX, enemyScaleY, enmImgX, enmImgY) {
-            var enemy = game.createGameItem("enemy", 25); //creates enemy
+        function createEnemy (enmHitZone, x, y, image, healthLost, scoreAdded, enemyScaleX, enemyScaleY, enmImgX, enmImgY) {
+            var enemy = game.createGameItem("enemy", enmHitZone); //creates enemy
             var gameEnemy = draw.bitmap(image);//creates singular enemy
             gameEnemy.x = enmImgX; //enemy image x-value
             gameEnemy.y = enmImgY; //enemy image y-value
@@ -110,8 +102,8 @@ var level01 = function (window) {
             gameReward.y = rwdImgY; //image y-value
             reward.x = x; //x-value of reward
             reward.y = y; //y-value of reward
-            gameReward.scaleX = rewardScaleX; //enemy image x-scale
-            gameReward.scaleY = rewardScaleY; //enemy image y-scale
+            gameReward.scaleX = rewardScaleX; //reward image x-scale
+            gameReward.scaleY = rewardScaleY; //reward image y-scale
             reward.addChild(gameReward); //adds gameReward as a child of reward
             game.addGameItem(reward); //adds reward to game
             reward.velocityX = -2; //allows reward to move
@@ -126,11 +118,11 @@ var level01 = function (window) {
                 var gameItem = levelData.gameItems[i];
 
                 if (gameItem.type === "obstacle") {
-                    createObstacle(gameItem.x, gameItem.y, gameItem.damage, gameItem.image, gameItem.canBreak, gameItem.rotateVelocity, gameItem.obstScaleX, gameItem.obstScaleY, gameItem.obstImgX, gameItem.obstImgY); //iterates over each object if the type is "obstacle"
+                    createObstacle(gameItem.obstHitZone, gameItem.x, gameItem.y, gameItem.damage, gameItem.image, gameItem.rotateVelocity, gameItem.obstScaleX, gameItem.obstScaleY, gameItem.obstImgX, gameItem.obstImgY); //iterates over each object if the type is "obstacle"
                 } else if (gameItem.type === "asteroid") {
-                    createAsteroid(gameItem.x, gameItem.y);//iterates over each object if the type is "asteroid"
+                    createAsteroid(gameItem.asteroidHitZone, gameItem.x, gameItem.y, gameItem.damage, gameItem.image, gameItem.spin, gameItem.imgScale, gameItem.imgX, gameItem.imgY);//iterates over each object if the type is "asteroid"
                 } else if (gameItem.type === "enemy") {
-                    createEnemy(gameItem.x, gameItem.y, gameItem.image, gameItem.healthLost, gameItem.scoreAdded, gameItem.enemyScaleX, gameItem.enemyScaleY, gameItem.enmImgX, gameItem.enmImgY);//iterates over each object if the type is "enemy"
+                    createEnemy(gameItem.enmHitZone, gameItem.x, gameItem.y, gameItem.image, gameItem.healthLost, gameItem.scoreAdded, gameItem.enemyScaleX, gameItem.enemyScaleY, gameItem.enmImgX, gameItem.enmImgY);//iterates over each object if the type is "enemy"
                 } else if (gameItem.type === "reward") {
                     createReward(gameItem.x, gameItem.y, gameItem.image, gameItem.pointsGiven, gameItem.healthGiven, gameItem.rewardScaleX, gameItem.rewardScaleY, gameItem.rwdImgX, gameItem.rwdImgY);//iterates over each object if the type is "reward"
                 }

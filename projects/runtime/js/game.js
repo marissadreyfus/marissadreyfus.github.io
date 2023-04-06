@@ -47,7 +47,7 @@
                 if(halle) {
                     // prevent replay of die animation - gameover is fired once animation is complete
                     // this still does not prevent collisions from being reported
-                    // but no easy way to handle this without touching a bunch of code in other places
+                    // but no easy way to handle this without touching a bunch of code in other places (is that a challenge?)
                     halle.addEventListener("gameover", function() {
                         view.removeChild(halle);
                     });
@@ -163,9 +163,7 @@
          */
         function addGameItem(gameItem) {
             if(debugMode) {
-                var 
-                
-                = draw.circle(gameItem.radius,'rgba(0, 0, 0, .3)');
+                var hitCircle = draw.circle(gameItem.radius,'rgba(0, 0, 0, .3)');
                 gameItem.addChild(hitCircle);
             }
             view.addChild(gameItem);
