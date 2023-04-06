@@ -163,7 +163,9 @@
          */
         function addGameItem(gameItem) {
             if(debugMode) {
-                var hitCircle = draw.circle(gameItem.radius,'rgba(0, 0, 0, .3)');
+                var 
+                
+                = draw.circle(gameItem.radius,'rgba(0, 0, 0, .3)');
                 gameItem.addChild(hitCircle);
             }
             view.addChild(gameItem);
