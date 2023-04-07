@@ -39,10 +39,10 @@ var level01 = function (window) {
 
                 { "type": "asteroid", "asteroidHitZone": 100, "x": 5300, "y": -4700, "damage": -50, "image": "img/asteroid.png", "velocityX": -2, "velocityY": 2, "spin": -2, "imgScale": 0.5, "imgX": -103.25, "imgY": -96  },
                 { "type": "asteroid", "asteroidHitZone": 100, "x": 5500, "y": -4900, "damage": -50, "image": "img/asteroid.png", "velocityX": -2, "velocityY": 2, "spin": -2, "imgScale": 0.5, "imgX": -103.25, "imgY": -96  },
-                { "type": "asteroid", "asteroidHitZone": 25, "x": 5000, "y": -4600, "damage": -10, "image": "img/star.png", "velocityX": -2, "velocityY": 2, "spin": -2, "imgScale": 1.7, "imgX": -34, "imgY": -34  },
-                { "type": "asteroid", "asteroidHitZone": 25, "x": 5200, "y": -4800, "damage": -10, "image": "img/star.png", "velocityX": -2, "velocityY": 2, "spin": -2, "imgScale": 1.7, "imgX": -34, "imgY": -34  },
+                { "type": "asteroid", "asteroidHitZone": 25, "x": 5000, "y": -4500, "damage": -10, "image": "img/star.png", "velocityX": -2, "velocityY": 2, "spin": -2, "imgScale": 1.7, "imgX": -34, "imgY": -34  },
+                { "type": "asteroid", "asteroidHitZone": 25, "x": 5200, "y": -4700, "damage": -10, "image": "img/star.png", "velocityX": -2, "velocityY": 2, "spin": -2, "imgScale": 1.7, "imgX": -34, "imgY": -34  },
                 { "type": "asteroid", "asteroidHitZone": 25, "x": 5600, "y": -5000, "damage": -10, "image": "img/star.png", "velocityX": -2, "velocityY": 2, "spin": -2, "imgScale": 1.7, "imgX": -34, "imgY": -34  },
-                { "type": "asteroid", "asteroidHitZone": 25, "x": 5100, "y": -5100, "damage": -10, "image": "img/star.png", "velocityX": -2, "velocityY": 2, "spin": -2, "imgScale": 1.7, "imgX": -34, "imgY": -34  },
+                { "type": "asteroid", "asteroidHitZone": 25, "x": 5100, "y": -5000, "damage": -10, "image": "img/star.png", "velocityX": -2, "velocityY": 2, "spin": -2, "imgScale": 1.7, "imgX": -34, "imgY": -34  },
                 { "type": "asteroid", "asteroidHitZone": 25, "x": 5700, "y": -5200, "damage": -10, "image": "img/star.png", "velocityX": -2, "velocityY": 2, "spin": -2, "imgScale": 1.7, "imgX": -34, "imgY": -34  },
                 //this is supposted to be unfair, you can't actually die to it and it's more of a distraction for:
                 { "type": "enemy", "enmHitZone": 75, "x": 6000, "y": groundY - 120, "image": "img/UFO.png", "healthLost": -100, "scoreAdded": 1000, "enemyScaleX": 0.5, "enemyScaleY": 0.5, "enmImgX": -135, "enmImgY": -50 },
