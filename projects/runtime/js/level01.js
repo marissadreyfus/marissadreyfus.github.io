@@ -16,20 +16,55 @@ var level01 = function (window) {
             "number": 1, 
             "speed": -3,
             "gameItems": [ //not a completely finished game - I plan on adding more to it after the "finished" product is turned in just for fun
-                { "type": "obstacle", "obstHitZone": 25, "x": 1000, "y": groundY - 110, "damage": 10, "image": "img/star.png", "rotateVelocity": -5, "obstScaleX": 1.7, "obstScaleY": 1.7, "obstImgX": -34, "obstImgY": -34  },
-                { "type": "obstacle", "obstHitZone": 50, "x": 1100, "y": groundY, "damage": 5, "image": "img/small_rocks.png", "rotateVelocity": 0, "obstScaleX": 0.7, "obstScaleY": 0.7, "obstImgX": -75, "obstImgY": 0  },
-                { "type": "asteroid", "asteroidHitZone": 100, "x": 1200, "y": -15, "damage": 50, "image": "img/asteroid.png", "spin": -2, "imgScale": 0.5, "imgX": -103.25, "imgY": -96  },
-                
-                { "type": "enemy", "enmHitZone": 75, "x": 1300, "y": groundY - 50, "image": "img/breakable_rock.png", "healthLost": -100, "scoreAdded": 0, "enemyScaleX": 0.7, "enemyScaleY": 0.7, "enmImgX": -80, "enmImgY": -50  },
-                { "type": "enemy", "enmHitZone": 30, "x": 1400, "y": groundY - 50, "image": "img/alien_in_ufo.png", "healthLost": -25, "scoreAdded": 50, "enemyScaleX": 0.2, "enemyScaleY": 0.2, "enmImgX": -50, "enmImgY": -34  },
-                { "type": "enemy", "enmHitZone": 75, "x": 1500, "y": groundY - 120, "image": "img/UFO.png", "healthLost": -100, "scoreAdded": 1000, "enemyScaleX": 0.5, "enemyScaleY": 0.5, "enmImgX": -135, "enmImgY": -50 },
-                { "type": "enemy", "enmHitZone": 25, "x": 1600, "y": groundY - 50, "image": "img/UFO.png", "healthLost": -10, "scoreAdded": 10, "enemyScaleX": 0.1, "enemyScaleY": 0.1, "enmImgX": -28, "enmImgY": -20   },
-                { "type": "enemy", "enmHitZone": 25, "x": 1700, "y": groundY - 40, "image": "img/star.png", "healthLost": -25, "scoreAdded": 25, "enemyScaleX": 1.7, "enemyScaleY": 1.7, "enmImgX": -34, "enmImgY": -34   },
+                { "type": "obstacle", "obstHitZone": 25, "x": 1300, "y": groundY - 110, "damage": 10, "image": "img/star.png", "rotateVelocity": -5, "obstScaleX": 1.7, "obstScaleY": 1.7, "obstImgX": -34, "obstImgY": -34  },
+                { "type": "obstacle", "obstHitZone": 25, "x": 1500, "y": groundY - 10, "damage": 10, "image": "img/star.png", "rotateVelocity": -5, "obstScaleX": 1.7, "obstScaleY": 1.7, "obstImgX": -34, "obstImgY": -34  },
+                { "type": "obstacle", "obstHitZone": 25, "x": 1700, "y": groundY - 110, "damage": 10, "image": "img/star.png", "rotateVelocity": -5, "obstScaleX": 1.7, "obstScaleY": 1.7, "obstImgX": -34, "obstImgY": -34  },
+                { "type": "obstacle", "obstHitZone": 25, "x": 1900, "y": groundY - 10, "damage": 10, "image": "img/star.png", "rotateVelocity": -5, "obstScaleX": 1.7, "obstScaleY": 1.7, "obstImgX": -34, "obstImgY": -34  },
 
-                { "type": "reward", "x": 1800, "y": groundY - 100, "image": "img/pink_orb.png", "pointsGiven": 15, "healthGiven": 15, "rewardScaleX": 0.3, "rewardScaleY": 0.3, "rwdImgX": -38, "rwdImgY": -31  },
-                { "type": "reward", "x": 1900, "y": groundY - 100, "image": "img/blue_orb.png", "pointsGiven": 30, "healthGiven": 25, "rewardScaleX": 0.3, "rewardScaleY": 0.3, "rwdImgX": -38, "rwdImgY": -31 },
-                { "type": "reward", "x": 2000, "y": groundY - 100, "image": "img/green_orb.png", "pointsGiven": 0, "healthGiven": 50, "rewardScaleX": 0.3, "rewardScaleY": 0.3, "rwdImgX": -38, "rwdImgY": -31 },
-                { "type": "reward", "x": 2100, "y": groundY - 100, "image": "img/medal_thing.png", "pointsGiven": 1000, "healthGiven": 100, "rewardScaleX": 0.3, "rewardScaleY": 0.3, "rwdImgX": -23, "rwdImgY": -35 },
+                { "type": "enemy", "enmHitZone": 30, "x": 2100, "y": groundY - 50, "image": "img/alien_in_ufo.png", "healthLost": -25, "scoreAdded": 50, "enemyScaleX": 0.2, "enemyScaleY": 0.2, "enmImgX": -50, "enmImgY": -34  },
+                
+                { "type": "reward", "x": 2500, "y": groundY - 100, "image": "img/pink_orb.png", "pointsGiven": 15, "healthGiven": 15, "rewardScaleX": 0.3, "rewardScaleY": 0.3, "rwdImgX": -38, "rwdImgY": -31  },
+
+                { "type": "obstacle", "obstHitZone": 45, "x": 2800, "y": groundY, "damage": 5, "image": "img/small_rocks.png", "rotateVelocity": 0, "obstScaleX": 0.7, "obstScaleY": 0.7, "obstImgX": -70, "obstImgY": 0  },
+                { "type": "obstacle", "obstHitZone": 45, "x": 3000, "y": groundY, "damage": 5, "image": "img/small_rocks.png", "rotateVelocity": 0, "obstScaleX": 0.7, "obstScaleY": 0.7, "obstImgX": -70, "obstImgY": 0  },
+                { "type": "obstacle", "obstHitZone": 45, "x": 3200, "y": groundY, "damage": 5, "image": "img/small_rocks.png", "rotateVelocity": 0, "obstScaleX": 0.7, "obstScaleY": 0.7, "obstImgX": -70, "obstImgY": 0  },
+                
+                { "type": "enemy", "enmHitZone": 75, "x": 3700, "y": groundY - 50, "image": "img/breakable_rock.png", "healthLost": -100, "scoreAdded": 0, "enemyScaleX": 0.7, "enemyScaleY": 0.7, "enmImgX": -80, "enmImgY": -50  },
+                
+                { "type": "reward", "x": 4000, "y": groundY - 100, "image": "img/blue_orb.png", "pointsGiven": 30, "healthGiven": 25, "rewardScaleX": 0.3, "rewardScaleY": 0.3, "rwdImgX": -38, "rwdImgY": -31 },
+                
+                { "type": "asteroid", "asteroidHitZone": 100, "x": 5300, "y": -4700, "damage": -50, "image": "img/asteroid.png", "velocityX": -2, "velocityY": 2, "spin": -2, "imgScale": 0.5, "imgX": -103.25, "imgY": -96  },
+                { "type": "asteroid", "asteroidHitZone": 100, "x": 5500, "y": -4900, "damage": -50, "image": "img/asteroid.png", "velocityX": -2, "velocityY": 2, "spin": -2, "imgScale": 0.5, "imgX": -103.25, "imgY": -96  },
+                { "type": "asteroid", "asteroidHitZone": 25, "x": 5000, "y": -4600, "damage": -10, "image": "img/star.png", "velocityX": -2, "velocityY": 2, "spin": -2, "imgScale": 1.7, "imgX": -34, "imgY": -34  },
+                { "type": "asteroid", "asteroidHitZone": 25, "x": 5200, "y": -4800, "damage": -10, "image": "img/star.png", "velocityX": -2, "velocityY": 2, "spin": -2, "imgScale": 1.7, "imgX": -34, "imgY": -34  },
+                { "type": "asteroid", "asteroidHitZone": 25, "x": 5600, "y": -5000, "damage": -10, "image": "img/star.png", "velocityX": -2, "velocityY": 2, "spin": -2, "imgScale": 1.7, "imgX": -34, "imgY": -34  },
+                { "type": "asteroid", "asteroidHitZone": 25, "x": 5100, "y": -5100, "damage": -10, "image": "img/star.png", "velocityX": -2, "velocityY": 2, "spin": -2, "imgScale": 1.7, "imgX": -34, "imgY": -34  },
+                { "type": "asteroid", "asteroidHitZone": 25, "x": 5700, "y": -5200, "damage": -10, "image": "img/star.png", "velocityX": -2, "velocityY": 2, "spin": -2, "imgScale": 1.7, "imgX": -34, "imgY": -34  },
+                
+                { "type": "enemy", "enmHitZone": 75, "x": 6000, "y": groundY - 120, "image": "img/UFO.png", "healthLost": -100, "scoreAdded": 1000, "enemyScaleX": 0.5, "enemyScaleY": 0.5, "enmImgX": -135, "enmImgY": -50 },
+
+                { "type": "reward", "x": 6500, "y": groundY - 100, "image": "img/green_orb.png", "pointsGiven": 0, "healthGiven": 50, "rewardScaleX": 0.3, "rewardScaleY": 0.3, "rwdImgX": -38, "rwdImgY": -31 },
+                
+                { "type": "enemy", "enmHitZone": 25, "x": 7000, "y": groundY - 50, "image": "img/UFO.png", "healthLost": -10, "scoreAdded": 10, "enemyScaleX": 0.1, "enemyScaleY": 0.1, "enmImgX": -28, "enmImgY": -20   },
+                { "type": "enemy", "enmHitZone": 25, "x": 7100, "y": groundY - 40, "image": "img/UFO.png", "healthLost": -10, "scoreAdded": 10, "enemyScaleX": 0.1, "enemyScaleY": 0.1, "enmImgX": -28, "enmImgY": -20   },
+                { "type": "enemy", "enmHitZone": 25, "x": 7200, "y": groundY - 60, "image": "img/UFO.png", "healthLost": -10, "scoreAdded": 10, "enemyScaleX": 0.1, "enemyScaleY": 0.1, "enmImgX": -28, "enmImgY": -20   },
+                { "type": "enemy", "enmHitZone": 25, "x": 7300, "y": groundY - 30, "image": "img/UFO.png", "healthLost": -10, "scoreAdded": 10, "enemyScaleX": 0.1, "enemyScaleY": 0.1, "enmImgX": -28, "enmImgY": -20   },
+                { "type": "enemy", "enmHitZone": 25, "x": 7400, "y": groundY - 70, "image": "img/UFO.png", "healthLost": -10, "scoreAdded": 10, "enemyScaleX": 0.1, "enemyScaleY": 0.1, "enmImgX": -28, "enmImgY": -20   },
+                //and, before you ask, you're supposed to be able to hit all 5 mini-UFOs in 1 shot - it's like a little reward after the miniboss thing
+                
+                { "type": "obstacle", "obstHitZone": 25, "x": 7900, "y": groundY - 10, "damage": 10, "image": "img/star.png", "rotateVelocity": -5, "obstScaleX": 1.7, "obstScaleY": 1.7, "obstImgX": -34, "obstImgY": -34  },
+                { "type": "obstacle", "obstHitZone": 25, "x": 8100, "y": groundY - 110, "damage": 10, "image": "img/star.png", "rotateVelocity": -5, "obstScaleX": 1.7, "obstScaleY": 1.7, "obstImgX": -34, "obstImgY": -34  },
+                { "type": "obstacle", "obstHitZone": 25, "x": 8300, "y": groundY - 10, "damage": 10, "image": "img/star.png", "rotateVelocity": -5, "obstScaleX": 1.7, "obstScaleY": 1.7, "obstImgX": -34, "obstImgY": -34  },
+                { "type": "obstacle", "obstHitZone": 25, "x": 8500, "y": groundY - 110, "damage": 10, "image": "img/star.png", "rotateVelocity": -5, "obstScaleX": 1.7, "obstScaleY": 1.7, "obstImgX": -34, "obstImgY": -34  },
+
+                { "type": "obstacle", "obstHitZone": 45, "x": 8900, "y": groundY, "damage": 5, "image": "img/small_rocks.png", "rotateVelocity": 0, "obstScaleX": 0.7, "obstScaleY": 0.7, "obstImgX": -70, "obstImgY": 0  },
+                { "type": "obstacle", "obstHitZone": 45, "x": 9100, "y": groundY, "damage": 5, "image": "img/small_rocks.png", "rotateVelocity": 0, "obstScaleX": 0.7, "obstScaleY": 0.7, "obstImgX": -70, "obstImgY": 0  },
+                { "type": "obstacle", "obstHitZone": 45, "x": 9300, "y": groundY, "damage": 5, "image": "img/small_rocks.png", "rotateVelocity": 0, "obstScaleX": 0.7, "obstScaleY": 0.7, "obstImgX": -70, "obstImgY": 0  },
+                { "type": "obstacle", "obstHitZone": 45, "x": 9500, "y": groundY, "damage": 5, "image": "img/small_rocks.png", "rotateVelocity": 0, "obstScaleX": 0.7, "obstScaleY": 0.7, "obstImgX": -70, "obstImgY": 0  },
+                { "type": "obstacle", "obstHitZone": 45, "x": 9700, "y": groundY, "damage": 5, "image": "img/small_rocks.png", "rotateVelocity": 0, "obstScaleX": 0.7, "obstScaleY": 0.7, "obstImgX": -70, "obstImgY": 0  },
+                { "type": "obstacle", "obstHitZone": 45, "x": 9900, "y": groundY, "damage": 5, "image": "img/small_rocks.png", "rotateVelocity": 0, "obstScaleX": 0.7, "obstScaleY": 0.7, "obstImgX": -70, "obstImgY": 0  },
+                
+                { "type": "reward", "x": 10100, "y": groundY - 100, "image": "img/medal_thing.png", "pointsGiven": 1000, "healthGiven": 100, "rewardScaleX": 0.3, "rewardScaleY": 0.3, "rwdImgX": -23, "rwdImgY": -35 },
             ]
         };
         window.levelData = levelData;
@@ -66,11 +101,11 @@ var level01 = function (window) {
             asteroid.y = y; //asteroid y-value
             asteroid.addChild(gameAsteroid); //adds gameAsteroid as a child of asteroid
             game.addGameItem(asteroid);//adds asteroid to game
-            asteroid.velocityX = -2;//asteroid x-velocity
-            asteroid.velocityY = 2;//asteroid y-velocity
-            gameAsteroid.rotationalVelocity = -2; //spiiiiin
+            asteroid.velocityX = velocityX;//asteroid x-velocity
+            asteroid.velocityY = velocityY;//asteroid y-velocity
+            gameAsteroid.rotationalVelocity = spin; //spiiiiin
             asteroid.onPlayerCollision = function () {
-                game.changeIntegrity(-50);//lowers health
+                game.changeIntegrity(damage);//lowers health
             }//what happens when player collides with asteroid
         }
 
@@ -120,7 +155,7 @@ var level01 = function (window) {
                 if (gameItem.type === "obstacle") {
                     createObstacle(gameItem.obstHitZone, gameItem.x, gameItem.y, gameItem.damage, gameItem.image, gameItem.rotateVelocity, gameItem.obstScaleX, gameItem.obstScaleY, gameItem.obstImgX, gameItem.obstImgY); //iterates over each object if the type is "obstacle"
                 } else if (gameItem.type === "asteroid") {
-                    createAsteroid(gameItem.asteroidHitZone, gameItem.x, gameItem.y, gameItem.damage, gameItem.image, gameItem.spin, gameItem.imgScale, gameItem.imgX, gameItem.imgY);//iterates over each object if the type is "asteroid"
+                    createAsteroid(gameItem.asteroidHitZone, gameItem.x, gameItem.y, gameItem.damage, gameItem.image, gameItem.velocityX, gameItem.velocityY, gameItem.spin, gameItem.imgScale, gameItem.imgX, gameItem.imgY);//iterates over each object if the type is "asteroid"
                 } else if (gameItem.type === "enemy") {
                     createEnemy(gameItem.enmHitZone, gameItem.x, gameItem.y, gameItem.image, gameItem.healthLost, gameItem.scoreAdded, gameItem.enemyScaleX, gameItem.enemyScaleY, gameItem.enmImgX, gameItem.enmImgY);//iterates over each object if the type is "enemy"
                 } else if (gameItem.type === "reward") {
