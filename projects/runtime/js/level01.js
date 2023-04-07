@@ -20,19 +20,23 @@ var level01 = function (window) {
                 { "type": "obstacle", "obstHitZone": 25, "x": 1500, "y": groundY - 10, "damage": 10, "image": "img/star.png", "rotateVelocity": -5, "obstScaleX": 1.7, "obstScaleY": 1.7, "obstImgX": -34, "obstImgY": -34  },
                 { "type": "obstacle", "obstHitZone": 25, "x": 1700, "y": groundY - 110, "damage": 10, "image": "img/star.png", "rotateVelocity": -5, "obstScaleX": 1.7, "obstScaleY": 1.7, "obstImgX": -34, "obstImgY": -34  },
                 { "type": "obstacle", "obstHitZone": 25, "x": 1900, "y": groundY - 10, "damage": 10, "image": "img/star.png", "rotateVelocity": -5, "obstScaleX": 1.7, "obstScaleY": 1.7, "obstImgX": -34, "obstImgY": -34  },
-
                 { "type": "enemy", "enmHitZone": 30, "x": 2100, "y": groundY - 50, "image": "img/alien_in_ufo.png", "healthLost": -25, "scoreAdded": 50, "enemyScaleX": 0.2, "enemyScaleY": 0.2, "enmImgX": -50, "enmImgY": -34  },
-                
+                //the first set of obstacles/enemies
+
                 { "type": "reward", "x": 2500, "y": groundY - 100, "image": "img/pink_orb.png", "pointsGiven": 15, "healthGiven": 15, "rewardScaleX": 0.3, "rewardScaleY": 0.3, "rwdImgX": -38, "rwdImgY": -31  },
+                //the first reward to show up
 
                 { "type": "obstacle", "obstHitZone": 45, "x": 2800, "y": groundY, "damage": 5, "image": "img/small_rocks.png", "rotateVelocity": 0, "obstScaleX": 0.7, "obstScaleY": 0.7, "obstImgX": -70, "obstImgY": 0  },
                 { "type": "obstacle", "obstHitZone": 45, "x": 3000, "y": groundY, "damage": 5, "image": "img/small_rocks.png", "rotateVelocity": 0, "obstScaleX": 0.7, "obstScaleY": 0.7, "obstImgX": -70, "obstImgY": 0  },
                 { "type": "obstacle", "obstHitZone": 45, "x": 3200, "y": groundY, "damage": 5, "image": "img/small_rocks.png", "rotateVelocity": 0, "obstScaleX": 0.7, "obstScaleY": 0.7, "obstImgX": -70, "obstImgY": 0  },
-                
+                //small rocks 1
+
                 { "type": "enemy", "enmHitZone": 75, "x": 3700, "y": groundY - 50, "image": "img/breakable_rock.png", "healthLost": -100, "scoreAdded": 0, "enemyScaleX": 0.7, "enemyScaleY": 0.7, "enmImgX": -80, "enmImgY": -50  },
-                
+                //instakill rock
+
                 { "type": "reward", "x": 4000, "y": groundY - 100, "image": "img/blue_orb.png", "pointsGiven": 30, "healthGiven": 25, "rewardScaleX": 0.3, "rewardScaleY": 0.3, "rwdImgX": -38, "rwdImgY": -31 },
-                
+                //another reward, yippee!
+
                 { "type": "asteroid", "asteroidHitZone": 100, "x": 5300, "y": -4700, "damage": -50, "image": "img/asteroid.png", "velocityX": -2, "velocityY": 2, "spin": -2, "imgScale": 0.5, "imgX": -103.25, "imgY": -96  },
                 { "type": "asteroid", "asteroidHitZone": 100, "x": 5500, "y": -4900, "damage": -50, "image": "img/asteroid.png", "velocityX": -2, "velocityY": 2, "spin": -2, "imgScale": 0.5, "imgX": -103.25, "imgY": -96  },
                 { "type": "asteroid", "asteroidHitZone": 25, "x": 5000, "y": -4600, "damage": -10, "image": "img/star.png", "velocityX": -2, "velocityY": 2, "spin": -2, "imgScale": 1.7, "imgX": -34, "imgY": -34  },
@@ -40,11 +44,13 @@ var level01 = function (window) {
                 { "type": "asteroid", "asteroidHitZone": 25, "x": 5600, "y": -5000, "damage": -10, "image": "img/star.png", "velocityX": -2, "velocityY": 2, "spin": -2, "imgScale": 1.7, "imgX": -34, "imgY": -34  },
                 { "type": "asteroid", "asteroidHitZone": 25, "x": 5100, "y": -5100, "damage": -10, "image": "img/star.png", "velocityX": -2, "velocityY": 2, "spin": -2, "imgScale": 1.7, "imgX": -34, "imgY": -34  },
                 { "type": "asteroid", "asteroidHitZone": 25, "x": 5700, "y": -5200, "damage": -10, "image": "img/star.png", "velocityX": -2, "velocityY": 2, "spin": -2, "imgScale": 1.7, "imgX": -34, "imgY": -34  },
-                
+                //this is supposted to be unfair, you can't actually die to it and it's more of a distraction for:
                 { "type": "enemy", "enmHitZone": 75, "x": 6000, "y": groundY - 120, "image": "img/UFO.png", "healthLost": -100, "scoreAdded": 1000, "enemyScaleX": 0.5, "enemyScaleY": 0.5, "enmImgX": -135, "enmImgY": -50 },
+                //the entire reason there's that many asteroids in the first place since i couldn't get the multi-shot to work - it's also an instakill
 
                 { "type": "reward", "x": 6500, "y": groundY - 100, "image": "img/green_orb.png", "pointsGiven": 0, "healthGiven": 50, "rewardScaleX": 0.3, "rewardScaleY": 0.3, "rwdImgX": -38, "rwdImgY": -31 },
-                
+                //heals you
+
                 { "type": "enemy", "enmHitZone": 25, "x": 7000, "y": groundY - 50, "image": "img/UFO.png", "healthLost": -10, "scoreAdded": 10, "enemyScaleX": 0.1, "enemyScaleY": 0.1, "enmImgX": -28, "enmImgY": -20   },
                 { "type": "enemy", "enmHitZone": 25, "x": 7100, "y": groundY - 40, "image": "img/UFO.png", "healthLost": -10, "scoreAdded": 10, "enemyScaleX": 0.1, "enemyScaleY": 0.1, "enmImgX": -28, "enmImgY": -20   },
                 { "type": "enemy", "enmHitZone": 25, "x": 7200, "y": groundY - 60, "image": "img/UFO.png", "healthLost": -10, "scoreAdded": 10, "enemyScaleX": 0.1, "enemyScaleY": 0.1, "enmImgX": -28, "enmImgY": -20   },
@@ -56,6 +62,7 @@ var level01 = function (window) {
                 { "type": "obstacle", "obstHitZone": 25, "x": 8100, "y": groundY - 110, "damage": 10, "image": "img/star.png", "rotateVelocity": -5, "obstScaleX": 1.7, "obstScaleY": 1.7, "obstImgX": -34, "obstImgY": -34  },
                 { "type": "obstacle", "obstHitZone": 25, "x": 8300, "y": groundY - 10, "damage": 10, "image": "img/star.png", "rotateVelocity": -5, "obstScaleX": 1.7, "obstScaleY": 1.7, "obstImgX": -34, "obstImgY": -34  },
                 { "type": "obstacle", "obstHitZone": 25, "x": 8500, "y": groundY - 110, "damage": 10, "image": "img/star.png", "rotateVelocity": -5, "obstScaleX": 1.7, "obstScaleY": 1.7, "obstImgX": -34, "obstImgY": -34  },
+                //more stars
 
                 { "type": "obstacle", "obstHitZone": 45, "x": 8900, "y": groundY, "damage": 5, "image": "img/small_rocks.png", "rotateVelocity": 0, "obstScaleX": 0.7, "obstScaleY": 0.7, "obstImgX": -70, "obstImgY": 0  },
                 { "type": "obstacle", "obstHitZone": 45, "x": 9100, "y": groundY, "damage": 5, "image": "img/small_rocks.png", "rotateVelocity": 0, "obstScaleX": 0.7, "obstScaleY": 0.7, "obstImgX": -70, "obstImgY": 0  },
@@ -63,13 +70,16 @@ var level01 = function (window) {
                 { "type": "obstacle", "obstHitZone": 45, "x": 9500, "y": groundY, "damage": 5, "image": "img/small_rocks.png", "rotateVelocity": 0, "obstScaleX": 0.7, "obstScaleY": 0.7, "obstImgX": -70, "obstImgY": 0  },
                 { "type": "obstacle", "obstHitZone": 45, "x": 9700, "y": groundY, "damage": 5, "image": "img/small_rocks.png", "rotateVelocity": 0, "obstScaleX": 0.7, "obstScaleY": 0.7, "obstImgX": -70, "obstImgY": 0  },
                 { "type": "obstacle", "obstHitZone": 45, "x": 9900, "y": groundY, "damage": 5, "image": "img/small_rocks.png", "rotateVelocity": 0, "obstScaleX": 0.7, "obstScaleY": 0.7, "obstImgX": -70, "obstImgY": 0  },
-                
+                //even more space rocks
+
                 { "type": "reward", "x": 10100, "y": groundY - 100, "image": "img/medal_thing.png", "pointsGiven": 1000, "healthGiven": 100, "rewardScaleX": 0.3, "rewardScaleY": 0.3, "rwdImgX": -23, "rwdImgY": -35 },
+                //yippee!!
+                //this is kinda like a beta version if that makes sense, there's a lot more I want to add that I didn't get the chance to yet (I want the game to be way longer than this)
             ]
         };
         window.levelData = levelData;
         // set this to true or false depending on if you want to see hitzones
-        game.setDebugMode(true);
+        game.setDebugMode(false);
 
         // TODO 6 and on go here
         // BEGIN EDITING YOUR CODE HERE
