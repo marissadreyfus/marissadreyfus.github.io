@@ -17,7 +17,7 @@ var score = 0;
 // Constant Variables
 var ROWS = 20;
 var COLUMNS = 20;
-var SQUARE_SIZE = 20;
+var SQUARE_SIZE = 40;
 var KEY = {
   LEFT: 37,
   UP: 38,
@@ -354,7 +354,6 @@ function getRandomAvailablePosition() {
       return false;
     }
    }
-   console.log(spaceIsAvailable);
   }
 
   return randomPosition;
