@@ -1,0 +1,54 @@
+things i'll need:
+    seperate start menu
+        start game
+        set ai
+        options maybe?
+    custom ai menu
+        i don't feel like making the nights, so it'll just be the custom night part
+        will not include golden freddy in set ai because they're special
+        maybe an "allow golden freddy" option w/ true or false
+    power mechanic. 
+        it drains faster when cams, doors, and lights are used
+        faster draining stacks
+    working cams
+        multiple parts of cams.
+        one cam just has audio
+        one cam stops foxy from moving
+        drains power
+    working doors
+        prevents animatronics from entering
+        will stay as long as button was pressed an uneven amount of times
+        will open again if even presses
+        drains power
+    working door lights
+        lights up door area
+        will only be active if button is being pressed
+        drains power
+    movement chances for animatronics
+        individual variables for each, except golden freddy
+        random number compared to ai number
+        if random is less or equal to ai number, move
+    behaviors for:
+        bonnie
+            can move if random number generated for movement chance is less than or equal to ai level
+            has a set path
+        chica
+            same as bonnie
+            different set path
+        foxy
+            movement is stopped if a specific cam is being looked at. if this happens, random number is set to 0 always
+            if movement reaches final location, will sprint down hallway
+            if door is closed, drains power. increase power drain for every time this happens
+        freddy
+            same as bonnie and chica
+            different set path
+            will have sound cues probably
+        golden freddy (maybe)
+            randomly generates a number if a specific cam is flipped up or looked at
+            if random number is 1, when camera is flipped down, spawn them
+            flip camera up, then back down, to despawn
+            unless you get super unlucky and spawn them twice
+    timer for nights
+        unsure how long each hour will be.
+        might include a timer with minutes like in ucn
+        maybe each hour is a minute long. would have to drain power faster if so
