@@ -337,7 +337,7 @@ function getRandomAvailablePosition() {
   while (!spaceIsAvailable) {
     randomPosition.column = Math.floor(Math.random() * COLUMNS);
     randomPosition.row = Math.floor(Math.random() * ROWS);
-    if (randomPosition.row === 0 || randomPosition.column === 0){
+    if (randomPosition.row === 0 && randomPosition.column === 0){
       randomPosition.column = Math.floor(Math.random() * COLUMNS);
       randomPosition.row = Math.floor(Math.random() * ROWS);
     }
