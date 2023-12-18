@@ -15,9 +15,9 @@ var snake = {};
 var apple = {};
 var score = 0;
 // Constant Variables
-var ROWS = 20;
-var COLUMNS = 20;
-var SQUARE_SIZE = 40;
+var ROWS = 40;
+var COLUMNS = 40;
+var SQUARE_SIZE = 20;
 var KEY = {
   LEFT: 37,
   UP: 38,
@@ -47,7 +47,7 @@ function init() {
   snake.body = [];
 
   // make the first snakeSquare and set it as the head
-  makeSnakeSquare(10, 10);
+  makeSnakeSquare(20, 20);
   snake.head = snake.body[0];
   // TODO 4b-2: initialize the apple
   makeApple();
@@ -337,11 +337,11 @@ function getRandomAvailablePosition() {
   while (!spaceIsAvailable) {
     randomPosition.column = Math.floor(Math.random() * COLUMNS);
     randomPosition.row = Math.floor(Math.random() * ROWS);
-    if (randomPosition.row === 0 && randomPosition.column === 0){
-      randomPosition.column = Math.floor(Math.random() * COLUMNS);
-      randomPosition.row = Math.floor(Math.random() * ROWS);
-    }
     spaceIsAvailable = true;
+    if (randomPosition.row < 0 || randomPosition.column < 0){
+      spaceIsAvailable = false;
+    }
+    
 
     /*
     TODO 13: After generating the random position determine if that position is
