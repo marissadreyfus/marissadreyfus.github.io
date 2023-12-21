@@ -8,6 +8,7 @@
 var board = $("#board");
 var scoreElement = $("#score");
 var highScoreElement = $("#highScore");
+highScoreElement.html("High Score: " + calculateHighScore());
 var snakeSquare = {};
 // TODO 4a: Create the snake, apple and score variables
 // Game Variables
@@ -338,7 +339,7 @@ function getRandomAvailablePosition() {
     randomPosition.column = Math.floor(Math.random() * COLUMNS);
     randomPosition.row = Math.floor(Math.random() * ROWS);
     spaceIsAvailable = true;
-    if (randomPosition.row < 0 || randomPosition.column < 0){
+    if (randomPosition.row === undefined || randomPosition.column === undefined){
       spaceIsAvailable = false;
     }
     
@@ -360,11 +361,11 @@ function getRandomAvailablePosition() {
 }
 
 function calculateHighScore() {
-  // retrieve the high score from session storage if it exists, or set it to 0
-  var highScore = sessionStorage.getItem("highScore") || 0;
+  // retrieve the high score from local* storage if it exists, or set it to 0
+  var highScore = localStorage.getItem("highScore") || 0;
 
   if (score > highScore) {
-    sessionStorage.setItem("highScore", score);
+    localStorage.setItem("highScore", score);
     highScore = score;
     alert("New High Score!");
   }
