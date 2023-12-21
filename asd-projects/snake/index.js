@@ -71,6 +71,12 @@ function update() {
 
   if (hasHitWall() || hasCollidedWithSnake()) {
     endGame();
+    alert("imagine dying");
+  }
+
+  if (score === 1599){
+    endGame();
+    alert("You win!");
   }
 
   if (hasCollidedWithApple()) {
