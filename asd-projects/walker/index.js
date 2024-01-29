@@ -61,18 +61,23 @@ function runProgram(){
     } else if (event.which === KEY.LEFT) {
       console.log("left pressed");
       walker.speedX = -5;
+      //if left pressed, move left
     } else if (event.which === KEY.RIGHT) {
       console.log("right pressed");
       walker.speedX = 5;
+      //if right pressed, move right
     } else if (event.which === KEY.UP) {
       console.log("up pressed");
       walker.speedY = -5;
+      //if up pressed, move up
     } else if (event.which === KEY.DOWN) {
       console.log("down pressed");
       walker.speedY = 5;
+      //if down pressed, move down
     } else if (event.which === KEY.KILL) {
       console.log("killbind key pressed");
       endGame();
+      //if kill key pressed, die
     }
   }
   function handleKeyUp (event) {
