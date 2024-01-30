@@ -10,16 +10,20 @@ function runProgram(){
   // Constant Variables
   var FRAME_RATE = 60;
   var FRAMES_PER_SECOND_INTERVAL = 1000 / FRAME_RATE;
+  var BOARD_WIDTH = $("#board").width();
+  var BOARD_HEIGHT = $("#board").height();
   var KEY = {
     ENTER: 13,
     LEFT: 37,
     UP: 38,
     RIGHT: 39,
     DOWN: 40,
-    KILL: 82
+    KILL: 82,
+    W: 87,
+    A: 65,
+    S: 83,
+    D: 68
   }
-  var BOARD_WIDTH = $("#board").width();
-  var BOARD_HEIGHT = $("#board").height();
   // Game Item Objects
   var walker  = {
     posX: 0,
@@ -27,13 +31,20 @@ function runProgram(){
     speedX: 0,
     speedY: 0,
     width: $("#walker").width(),
-    height: $("#walker").height()
+    height: $("#walker").height(),
   }
-
+  var walkerP2  = {
+    posX2: 390,
+    posY2: 390,
+    speedX2: 0,
+    speedY2: 0,
+    width2: $("#walkerP2").width(),
+    height2: $("#walkerP2").height(),
+  }
   // one-time setup
   var interval = setInterval(newFrame, FRAMES_PER_SECOND_INTERVAL);   // execute newFrame every 0.0166 seconds (60 Frames per second)
   $(document).on('keydown', handleKeyDown);                           // change 'eventType' to the type of event you want to handle
-  $(document).on('keyup', handleKeyUp);  
+  $(document).on('keyup', handleKeyUp);
   ////////////////////////////////////////////////////////////////////////////////
   ///////////////////////// CORE LOGIC ///////////////////////////////////////////
   ////////////////////////////////////////////////////////////////////////////////
@@ -56,8 +67,6 @@ function runProgram(){
     if (event.which === KEY.ENTER) {
       console.log("enter pressed");
       //display pause screen maybe
-      //or toggle score display
-      //i should add a killbind this time huh...
     } else if (event.which === KEY.LEFT) {
       console.log("left pressed");
       walker.speedX = -5;
@@ -78,16 +87,37 @@ function runProgram(){
       console.log("killbind key pressed");
       endGame();
       //if kill key pressed, die
+    } else if (event.which === KEY.A) {
+      console.log("left2 pressed");
+      walkerP2.speedX2 = -5;
+      //if a pressed, move left
+    } else if (event.which === KEY.D) {
+      console.log("right2 pressed");
+      walkerP2.speedX2 = 5;
+      //if d pressed, move right
+    } else if (event.which === KEY.W) {
+      console.log("up2 pressed");
+      walkerP2.speedY2 = -5;
+      //if w pressed, move up
+    } else if (event.which === KEY.S) {
+      console.log("down2 pressed");
+      walkerP2.speedY2 = 5;
+      //if s pressed, move down
     }
   }
   function handleKeyUp (event) {
-    if (event.which === KEY.LEFT || event.which === KEY.RIGHT) {
+    if (event.which === KEY.LEFT || event.which === KEY.RIGHT || event.which === KEY.A || event.which === KEY.D) {
       walker.speedX = 0;
+      walkerP2.speedX2 = 0;
     }
-    if (event.which === KEY.UP || event.which === KEY.DOWN) {
+    if (event.which === KEY.UP || event.which === KEY.DOWN || event.which === KEY.W || event.which === KEY.S) {
       walker.speedY = 0;
+      walkerP2.speedY2 = 0;
     }
   }
+  var randomColor = "#000000".replace(/0/g, function () {
+    return (~~(Math.random() * 16)).toString(16);
+  });
   ////////////////////////////////////////////////////////////////////////////////
   ////////////////////////// HELPER FUNCTIONS ////////////////////////////////////
   ////////////////////////////////////////////////////////////////////////////////
@@ -95,10 +125,14 @@ function runProgram(){
   function reposGameItem () {
     walker.posX += walker.speedX;
     walker.posY += walker.speedY;
+    walkerP2.posX2 += walkerP2.speedX2;
+    walkerP2.posY2 += walkerP2.speedY2;
   }
   function redrawGameItem () {
     $("#walker").css("left", walker.posX);
     $("#walker").css("top", walker.posY);
+    $("#walkerP2").css("left", walkerP2.posX2);
+    $("#walkerP2").css("top", walkerP2.posY2);
   }
   function wall () {
     if (walker.posX > BOARD_WIDTH - walker.width|| walker.posX < 0) {
@@ -106,6 +140,12 @@ function runProgram(){
     }
     if (walker.posY > BOARD_HEIGHT - walker.height|| walker.posY < 0) {
       walker.posY -= walker.speedY;
+    }
+    if (walkerP2.posX2 > BOARD_WIDTH - walkerP2.width2|| walkerP2.posX2 < 0) {
+      walkerP2.posX2 -= walkerP2.speedX2;
+    }
+    if (walkerP2.posY2 > BOARD_HEIGHT - walkerP2.height2|| walkerP2.posY2 < 0) {
+      walkerP2.posY2 -= walkerP2.speedY2;
     }
   }
   function endGame() {
