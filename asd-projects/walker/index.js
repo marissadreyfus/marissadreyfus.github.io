@@ -34,8 +34,8 @@ function runProgram(){
     height: $("#walker").height(),
   }
   var walkerP2  = {
-    posX2: 390,
-    posY2: 390,
+    posX2: 388,
+    posY2: 388,
     speedX2: 0,
     speedY2: 0,
     width2: $("#walkerP2").width(),
@@ -45,6 +45,7 @@ function runProgram(){
   var interval = setInterval(newFrame, FRAMES_PER_SECOND_INTERVAL);   // execute newFrame every 0.0166 seconds (60 Frames per second)
   $(document).on('keydown', handleKeyDown);                           // change 'eventType' to the type of event you want to handle
   $(document).on('keyup', handleKeyUp);
+  $('#walker').on('click', handleClick);
   ////////////////////////////////////////////////////////////////////////////////
   ///////////////////////// CORE LOGIC ///////////////////////////////////////////
   ////////////////////////////////////////////////////////////////////////////////
@@ -89,19 +90,19 @@ function runProgram(){
       //if kill key pressed, die
     } else if (event.which === KEY.A) {
       console.log("left2 pressed");
-      walkerP2.speedX2 = -5;
+      walkerP2.speedX2 = -4;
       //if a pressed, move left
     } else if (event.which === KEY.D) {
       console.log("right2 pressed");
-      walkerP2.speedX2 = 5;
+      walkerP2.speedX2 = 4;
       //if d pressed, move right
     } else if (event.which === KEY.W) {
       console.log("up2 pressed");
-      walkerP2.speedY2 = -5;
+      walkerP2.speedY2 = -4;
       //if w pressed, move up
     } else if (event.which === KEY.S) {
       console.log("down2 pressed");
-      walkerP2.speedY2 = 5;
+      walkerP2.speedY2 = 4;
       //if s pressed, move down
     }
   }
@@ -115,9 +116,9 @@ function runProgram(){
       walkerP2.speedY2 = 0;
     }
   }
-  var randomColor = "#000000".replace(/0/g, function () {
-    return (~~(Math.random() * 16)).toString(16);
-  });
+  function handleClick(){
+    changeColor();
+  }
   ////////////////////////////////////////////////////////////////////////////////
   ////////////////////////// HELPER FUNCTIONS ////////////////////////////////////
   ////////////////////////////////////////////////////////////////////////////////
@@ -148,6 +149,13 @@ function runProgram(){
       walkerP2.posY2 -= walkerP2.speedY2;
     }
   }
+  function changeColor () {
+    var r = Math.random(0, 255) * 100;
+    var g = Math.random(0, 255) * 100;
+    var b = Math.random(0, 255) * 100;
+    var color = "rgb("+ r + "," + g + "," + b + ")";
+    $('#walker').css('background-color', color); 
+  }
   function endGame() {
     // stop the interval timer
     clearInterval(interval);
@@ -157,5 +165,4 @@ function runProgram(){
     // turn off event handlers
     $(document).off();
   }
-  
 }
