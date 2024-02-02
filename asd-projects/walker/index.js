@@ -8,10 +8,10 @@ function runProgram(){
   ////////////////////////////////////////////////////////////////////////////////
 
   // Constant Variables
-  var FRAME_RATE = 60;
+  var FRAME_RATE = 60; //sets the frame rate//
   var FRAMES_PER_SECOND_INTERVAL = 1000 / FRAME_RATE;
-  var BOARD_WIDTH = $("#board").width();
-  var BOARD_HEIGHT = $("#board").height();
+  var BOARD_WIDTH = $("#board").width(); //sets the board width//
+  var BOARD_HEIGHT = $("#board").height(); //sets the board height//
   var KEY = {
     ENTER: 13,
     LEFT: 37,
@@ -23,8 +23,9 @@ function runProgram(){
     A: 65,
     S: 83,
     D: 68
-  }
+  } //key codes//
   // Game Item Objects
+  //player 1//
   var walker  = {
     posX: 0,
     posY: 0,
@@ -33,6 +34,7 @@ function runProgram(){
     width: $("#walker").width(),
     height: $("#walker").height(),
   }
+  //player 2//
   var walkerP2  = {
     posX2: 388,
     posY2: 388,
@@ -43,7 +45,7 @@ function runProgram(){
   }
   // one-time setup
   var interval = setInterval(newFrame, FRAMES_PER_SECOND_INTERVAL);   // execute newFrame every 0.0166 seconds (60 Frames per second)
-  $(document).on('keydown', handleKeyDown);                           // change 'eventType' to the type of event you want to handle
+  $(document).on('keydown', handleKeyDown);                           //the handle events//
   $(document).on('keyup', handleKeyUp);
   $('#walker').on('click', handleClick);
   ////////////////////////////////////////////////////////////////////////////////
@@ -67,46 +69,47 @@ function runProgram(){
     console.log(event.key);
     if (event.which === KEY.ENTER) {
       console.log("enter pressed");
-      //display pause screen maybe
+      //display pause screen maybe? not sure how i'd do that but//
     } else if (event.which === KEY.LEFT) {
       console.log("left pressed");
       walker.speedX = -5;
-      //if left pressed, move left
+      //if left pressed, move left//
     } else if (event.which === KEY.RIGHT) {
       console.log("right pressed");
       walker.speedX = 5;
-      //if right pressed, move right
+      //if right pressed, move right//
     } else if (event.which === KEY.UP) {
       console.log("up pressed");
       walker.speedY = -5;
-      //if up pressed, move up
+      //if up pressed, move up//
     } else if (event.which === KEY.DOWN) {
       console.log("down pressed");
       walker.speedY = 5;
-      //if down pressed, move down
+      //if down pressed, move down//
     } else if (event.which === KEY.KILL) {
       console.log("killbind key pressed");
       endGame();
-      //if kill key pressed, die
+      //if kill key pressed, die//
     } else if (event.which === KEY.A) {
       console.log("left2 pressed");
       walkerP2.speedX2 = -4;
-      //if a pressed, move left
+      //if a pressed, move left//
     } else if (event.which === KEY.D) {
       console.log("right2 pressed");
       walkerP2.speedX2 = 4;
-      //if d pressed, move right
+      //if d pressed, move right//
     } else if (event.which === KEY.W) {
       console.log("up2 pressed");
       walkerP2.speedY2 = -4;
-      //if w pressed, move up
+      //if w pressed, move up//
     } else if (event.which === KEY.S) {
       console.log("down2 pressed");
       walkerP2.speedY2 = 4;
-      //if s pressed, move down
+      //if s pressed, move down//
     }
   }
   function handleKeyUp (event) {
+    //if key released, stop moving//
     if (event.which === KEY.LEFT || event.which === KEY.RIGHT || event.which === KEY.A || event.which === KEY.D) {
       walker.speedX = 0;
       walkerP2.speedX2 = 0;
@@ -118,22 +121,25 @@ function runProgram(){
   }
   function handleClick(){
     changeColor();
+    //if click, change color//
   }
   ////////////////////////////////////////////////////////////////////////////////
   ////////////////////////// HELPER FUNCTIONS ////////////////////////////////////
   ////////////////////////////////////////////////////////////////////////////////
 
-  function reposGameItem () {
+  function reposGameItem () { //"repos" is reposition//
     walker.posX += walker.speedX;
     walker.posY += walker.speedY;
     walkerP2.posX2 += walkerP2.speedX2;
     walkerP2.posY2 += walkerP2.speedY2;
+    //allows the walker hitbox to move//
   }
   function redrawGameItem () {
     $("#walker").css("left", walker.posX);
     $("#walker").css("top", walker.posY);
     $("#walkerP2").css("left", walkerP2.posX2);
     $("#walkerP2").css("top", walkerP2.posY2);
+    //allows the walker to move visibly//
   }
   function wall () {
     if (walker.posX > BOARD_WIDTH - walker.width|| walker.posX < 0) {
@@ -148,6 +154,7 @@ function runProgram(){
     if (walkerP2.posY2 > BOARD_HEIGHT - walkerP2.height2|| walkerP2.posY2 < 0) {
       walkerP2.posY2 -= walkerP2.speedY2;
     }
+    //wall collisions//
   }
   function changeColor () {
     var r = Math.random(0, 255) * 100;
@@ -155,6 +162,7 @@ function runProgram(){
     var b = Math.random(0, 255) * 100;
     var color = "rgb("+ r + "," + g + "," + b + ")";
     $('#walker').css('background-color', color); 
+    //allows the color change in the click function to happen//
   }
   function endGame() {
     // stop the interval timer
