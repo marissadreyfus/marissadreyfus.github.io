@@ -1,0 +1,12 @@
+.player {
+    display: block;
+    width: 10px;
+    height: 10px;
+    color: rgb(142, 185, 142);
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    border: double;
+    border-width: 1px;
+    border-color: black;
+}
