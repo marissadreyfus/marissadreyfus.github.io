@@ -15,7 +15,7 @@ var level01 = function (window) {
             "name": "Out of this World",
             "number": 1, 
             "speed": -3,
-            "gameItems": [ //not a completely finished game - I plan on adding more to it after the "finished" product is turned in just for fun
+            /* "gameItems": [ //not a completely finished game - I plan on adding more to it after the "finished" product is turned in just for fun
                 { "type": "obstacle", "obstHitZone": 25, "x": 1300, "y": groundY - 110, "damage": 10, "image": "img/star.png", "rotateVelocity": -5, "obstScaleX": 1.7, "obstScaleY": 1.7, "obstImgX": -34, "obstImgY": -34  },
                 { "type": "obstacle", "obstHitZone": 25, "x": 1500, "y": groundY - 10, "damage": 10, "image": "img/star.png", "rotateVelocity": -5, "obstScaleX": 1.7, "obstScaleY": 1.7, "obstImgX": -34, "obstImgY": -34  },
                 { "type": "obstacle", "obstHitZone": 25, "x": 1700, "y": groundY - 110, "damage": 10, "image": "img/star.png", "rotateVelocity": -5, "obstScaleX": 1.7, "obstScaleY": 1.7, "obstImgX": -34, "obstImgY": -34  },
@@ -75,16 +75,18 @@ var level01 = function (window) {
                 { "type": "reward", "x": 10100, "y": groundY - 100, "image": "img/medal_thing.png", "pointsGiven": 1000, "healthGiven": 100, "rewardScaleX": 0.3, "rewardScaleY": 0.3, "rwdImgX": -23, "rwdImgY": -35 },
                 //yippee!!
                 //this is kinda like a beta version if that makes sense, there's a lot more I want to add that I didn't get the chance to yet (I want the game to be way longer than this)
-            ]
+            ]*/
         };
         window.levelData = levelData;
         // set this to true or false depending on if you want to see hitzones
-        game.setDebugMode(false);
+        game.setDebugMode(true);
 
         // TODO 6 and on go here
         // BEGIN EDITING YOUR CODE HERE
-
-        function createObstacle (obstHitZone, x, y, damage, image, rotateVelocity, obstScaleX, obstScaleY, obstImgX, obstImgY) { 
+        function createObj (type, hitZone, damageDealt, hp, points, x, y, velocityX, velocityY, spin, imgScale, imgX, imgY) {
+            var obj = game.createGameItem(obj, hitZone); //creates the object
+        }
+        /*function createObstacle (obstHitZone, x, y, damage, image, rotateVelocity, obstScaleX, obstScaleY, obstImgX, obstImgY) { 
             var hitZoneSize = obstHitZone; //assigns hitzone size to 25
             var damageFromObstacle = damage; //assigns amount of damage taken from hitzone
             var obstacleHitZone = game.createObstacle(hitZoneSize, damageFromObstacle); //creates obstacle
@@ -157,7 +159,7 @@ var level01 = function (window) {
                 game.increaseScore(pointsGiven); //increases points
                 reward.fadeOut(); //removes reward
             } //what happens when reward collides with the player
-        }
+        }*/
 
             for (var i = 0; i < levelData.gameItems.length; i++) {
                 var gameItem = levelData.gameItems[i];
