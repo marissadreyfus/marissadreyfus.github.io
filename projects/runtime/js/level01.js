@@ -83,8 +83,29 @@ var level01 = function (window) {
 
         // TODO 6 and on go here
         // BEGIN EDITING YOUR CODE HERE
-        function createObj (type, hitZone, damageDealt, hp, points, x, y, velocityX, velocityY, spin, imgScale, imgX, imgY) {
-            var obj = game.createGameItem(obj, hitZone); //creates the object
+        function createObj (type, hitZone, damageDealt, hp, points, x, y, velocityX, velocityY, spin, img, imgScale, imgX, imgY) {
+            var obj = game.createGameItem(hitZone, damageDealt); //creates the object
+            obj.x = x; //x value
+            obj.y = groundY - y; //y value, this time set to automatically include "groundY -" instead of typing it every time
+            obj.rotationalVelocity = spin;
+            obj.onPlayerCollision = function () {
+                game.changeIntegrity(damageDealt); //lowers health
+            } //what happens when player collides with object
+            if (type === 'enemy') { //if it's an enemy...
+                obj.onProjectileCollision = function () {
+                    
+                    game.increaseScore(points);//increases score
+                    obj.fadeOut();//removes object
+                }//when object is shot
+            } //...it can be shot
+            var objImg = draw.bitmap(img);
+            objImg.x = imgX;
+            objImg.y = imgY;
+            objImg.scaleX = imgScale;
+            objImg.scaleY = imgScale;
+            game.addGameItem(obj);
+            obj.addChild(objImg);
+            
         }
         /*function createObstacle (obstHitZone, x, y, damage, image, rotateVelocity, obstScaleX, obstScaleY, obstImgX, obstImgY) { 
             var hitZoneSize = obstHitZone; //assigns hitzone size to 25
