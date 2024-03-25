@@ -1,14 +1,13 @@
 var level01 = function (window) {
 
     window.opspark = window.opspark || {};
-
+    console.log(Math.floor((Math.random())*2));
     var draw = window.opspark.draw;
     var createjs = window.createjs;
-
     window.opspark.runLevelInGame = function(game) {
         // some useful constants 
         var groundY = game.groundY;
-
+        const Y_VALS = [0, 10, 20];
         // this data will allow us to define all of the
         // behavior of our game
         var levelData = {
@@ -86,16 +85,19 @@ var level01 = function (window) {
         function createObj (type, hitZone, damageDealt, hp, points, x, y, velocityX, velocityY, spin, img, imgScale, imgX, imgY) {
             var obj = game.createGameItem(hitZone, damageDealt); //creates the object
             obj.x = x; //x value
-            obj.y = groundY - y; //y value, this time set to automatically include "groundY -" instead of typing it every time
+            var yVal = Math.floor(Math.random()*2);
+            obj.y = groundY - Y_VALS[0]; //y value, this time set to automatically include "groundY -" instead of typing it every time
             obj.rotationalVelocity = spin;
             obj.onPlayerCollision = function () {
                 game.changeIntegrity(damageDealt); //lowers health
             } //what happens when player collides with object
             if (type === 'enemy') { //if it's an enemy...
                 obj.onProjectileCollision = function () {
-                    
-                    game.increaseScore(points);//increases score
-                    obj.fadeOut();//removes object
+                    hp--; //lowers hp by 1 ; the more hp, the more hits it can take
+                    if (hp <= 0) { //checks for hp
+                        game.increaseScore(points);//increases score
+                        obj.fadeOut();//removes object
+                    } //for when the enemy dies
                 }//when object is shot
             } //...it can be shot
             var objImg = draw.bitmap(img);
