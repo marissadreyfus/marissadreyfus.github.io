@@ -5,7 +5,7 @@ body {
 
 #board {
   width: 1900px;
-  height: 945px;
+  height: 845px;
   border: 1px solid white;
   background-color: rgb(34, 34, 34);
   position: relative;
@@ -37,7 +37,25 @@ body {
   width: 50px;
   height: 50px;
   position: absolute;
-  left: 900px;
+  left: 925px;
   top: 422.5px;
 }
 
+#p1ScoreBox {
+  background-color: black;
+  border: 1px solid rgb(255, 255, 255);
+  width: 950px;
+  height: 100px;
+  position: absolute;
+  left: -1px;
+  bottom: -102px;
+}
+#p2ScoreBox {
+  background-color: white;
+  border: 1px solid rgb(0, 0, 0);
+  width: 950px;
+  height: 100px;
+  position: absolute;
+  right: -1px;
+  bottom: -102px;
+}
