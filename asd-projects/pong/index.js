@@ -10,19 +10,22 @@ function runProgram(){
   // Constant Variables
   const FRAME_RATE = 60;
   const FRAMES_PER_SECOND_INTERVAL = 1000 / FRAME_RATE;
+  const BOARD_WIDTH = $('#board').width();
+  const BOARD_HEIGHT = $('#board').height();
   var KEYCODES = {
     W: 87,
     S: 83,
     UP: 38,
     DOWN: 40,
     ENT: 13, //this is enter
+    SPACE: 32,
   }
   
   // Game Item Objects
-  function gameItem (id, leftOrRight) { 
+  function gameItem (id) { 
     return {
       id: id,
-      x: parseFloat($(id).css(leftOrRight)),
+      x: parseFloat($(id).css('left')),
       y: parseFloat($(id).css('top')),
       speedX: 0, //this will not be used for the paddles, but I need it for the ball to move 
       speedY: 0,
@@ -31,9 +34,10 @@ function runProgram(){
     };
   }
 
-  var p1 = gameItem('#leftPaddle', 'left');
-  var p2 = gameItem('#rightPaddle', 'right');
-  var ball = gameItem('#ball', 'left');
+  var p1 = gameItem('#leftPaddle');
+  var p2 = gameItem('#rightPaddle');
+  var ball = gameItem('#ball');
+  var start = false;
 
   // one-time setup
   let interval = setInterval(newFrame, FRAMES_PER_SECOND_INTERVAL);   // execute newFrame every 0.0166 seconds (60 Frames per second)
@@ -49,12 +53,13 @@ function runProgram(){
   by calling this function and executing the code inside.
   */
   function newFrame() {
+    startGameText();
     reposGameItem(p1);
     reposGameItem(p2);
     reposGameItem(ball);
-    redraw(p1, 'left');
-    redraw(p2, 'right');
-    redraw(ball, 'left');
+    redraw(p1);
+    redraw(p2);
+    redraw(ball);
   }
   
   /* 
@@ -72,6 +77,11 @@ function runProgram(){
     }
     if (event.which === KEYCODES.DOWN) {
       p2.speedY = 5;
+    }
+    if (event.which === KEYCODES.SPACE && ball.speedX === 0 && ball.speedY === 0) {
+      ball.speedX = Math.random() > 0.5 ? -5 : 5;
+      ball.speedY = Math.random() > 0.5 ? -5 : 5;
+      start = true;
     }
   }
 
@@ -92,17 +102,29 @@ function runProgram(){
     obj.x += obj.speedX;
     obj.y += obj.speedY;
   }
-  function redraw (obj, leftOrRight) {
-    $(obj.id).css(leftOrRight, obj.x);
+  function redraw (obj) {
+    $(obj.id).css('left', obj.x);
     $(obj.id).css('top', obj.y);
   }
-  
+
+  function startGameText () {
+    if (start === false) {
+      $('#startText').text('Press SPACE to start.');
+      $('#startText').css("left", BOARD_WIDTH / 2 - $('#startText').width() / 2);
+    }
+    if (start === true) {
+      $("#startText").hide();
+    }
+  }
+
   function endGame() {
     // stop the interval timer
     clearInterval(interval);
 
     // turn off event handlers
     $(document).off();
+
+    start = false;
   }
 
 }
