@@ -21,6 +21,8 @@ function runProgram(){
     SPACE: 32,
   }
   
+  //add game functions for ball speeding up and getting gradually smaller over time if no one is gaining points
+
   // Game Item Objects
   function gameItem (id) { 
     return {
