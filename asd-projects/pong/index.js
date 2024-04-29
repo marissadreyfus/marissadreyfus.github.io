@@ -69,6 +69,8 @@ function runProgram(){
     boundPlayers(p1);
     boundPlayers(p2);
     boundBalls(ball);
+    handleDoCollide(ball, p1);
+    handleDoCollide(ball, p2);
   }
   
   /* 
@@ -122,20 +124,22 @@ function runProgram(){
     if (obj.y >= BOARD_HEIGHT - obj.height || obj.y <= 0) {
       obj.speedY = -obj.speedY;
     }
-    if (isColliding(obj, p1) === true || isColliding(obj, p2) === true) {
-      obj.speedX = -obj.speedX;
-    }
   }
   function boundPlayers (obj) {
     if (obj.y < 0 || obj.y > BOARD_HEIGHT - obj.height) {
       obj.y -= obj.speedY;
     }
   }
-  function isColliding (obj1, obj2) {
+  function doCollide (obj1, obj2) {
     if (obj1.x < obj2.x + obj2.width && obj1.x + obj1.width > obj2.x && obj1.y < obj2.y + obj2.height && obj1.y + obj1.height > obj2.y) {
       return true;
     } else {
       return false;
+    }
+  }
+  function handleDoCollide (obj1, obj2) {
+    if (doCollide(obj1, obj2) === true) {
+      obj1.speedX = -obj1.speedX;
     }
   }
   function scoring () {
