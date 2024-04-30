@@ -71,6 +71,7 @@ function runProgram(){
     boundBalls(ball);
     handleDoCollide(ball, p1);
     handleDoCollide(ball, p2);
+    handleEndGame();
   }
   
   /* 
@@ -116,6 +117,8 @@ function runProgram(){
   function redraw (obj) {
     $(obj.id).css('left', obj.x);
     $(obj.id).css('top', obj.y);
+    $(obj.id).css('width', obj.width)
+    $(obj.id).css('height', obj.height);
   }
   function boundBalls (obj) {
     if (obj.x >= BOARD_WIDTH - obj.width || obj.x <= 0) {
@@ -140,24 +143,40 @@ function runProgram(){
   function handleDoCollide (obj1, obj2) {
     if (doCollide(obj1, obj2) === true) {
       obj1.speedX = -obj1.speedX;
+      if (obj1.speedX < 0) {
+        obj1.speedX--;
+      } else if (obj1.speedX > 0) {
+        obj1.speedX++;
+      }
+      if (obj1.speedY < 0) {
+        obj1.speedY--;
+      } else if (obj1.speedY > 0) {
+        obj1.speedY++;
+      }
+      if (obj1.width > 5 || obj1.height > 5) {
+          obj1.width-=5;
+          obj1.height-=5;
+      }
     }
   }
   function scoring () {
     var ballX = 925;
     var ballY = 422.5;
+    var ballWidth = 50;
+    var ballHeight = 50;
     if (ball.x >= BOARD_WIDTH - ball.width) {
       p1Score++;
-      ball.x = ballX;
-      ball.y = ballY;
-      ball.speedX = 0;
-      ball.speedY = 0;
     }
     if (ball.x <= 0) {
       p2Score++;
+    }
+    if (ball.x >= BOARD_WIDTH - ball.width || ball.x <= 0) {
       ball.x = ballX;
       ball.y = ballY;
       ball.speedX = 0;
       ball.speedY = 0;
+      ball.width = ballWidth;
+      ball.height = ballHeight;
     }
   }
   function gameText () {
@@ -174,15 +193,16 @@ function runProgram(){
       $('#startTextBox').hide();
     }
   }
-
   function endGame() {
     // stop the interval timer
     clearInterval(interval);
-
     // turn off event handlers
     $(document).off();
-
     start = false;
   }
-
+  function handleEndGame () {
+    if (p1Score === 10 || p2Score === 10) {
+      endGame();
+    }
+  }
 }
