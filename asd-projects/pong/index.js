@@ -43,6 +43,7 @@ function runProgram(){
   var start = false;
   var p1Score = 0;
   var p2Score = 0;
+  var oneFrameInMilliseconds = 17;
 
   // one-time setup
   let interval = setInterval(newFrame, FRAMES_PER_SECOND_INTERVAL);   // execute newFrame every 0.0166 seconds (60 Frames per second)
