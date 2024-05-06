@@ -20,7 +20,9 @@ function runProgram(){
     ENT: 13, //this is enter
     SPACE: 32,
   }
-  
+  $('#endTextBox').hide();
+  $("#endText").hide();
+  $("#winText").hide();
   //add game functions for ball speeding up and getting gradually smaller over time if no one is gaining points
 
   // Game Item Objects
@@ -184,6 +186,8 @@ function runProgram(){
     $('#p1Score').css('left', $('#p1Score').x);
     $('#p2Score').text('Player 2 Score: ' + p2Score);
     $('#p2Score').css('left', $('#p2Score').x);
+    $('#endText').text('Congrats ' + decideWinner() + '!');
+    $('#winText').text('You Won!');
     if (start === false) {
       $('#startText').text('Press SPACE to start.');
       $('#startText').css("left", BOARD_WIDTH / 2 - $('#startText').width() / 2);
@@ -194,12 +198,22 @@ function runProgram(){
     }
     callback();
   }
+  function decideWinner () {
+    if (p1Score > p2Score) {
+      return 'Player 1';
+    } else if (p2Score > p1Score) {
+      return 'Player 2';
+    }
+  }
   function endGame() {
+    start = false;
+    $('#endTextBox').show();
+    $("#endText").show();
+    $("#winText").show();
     // stop the interval timer
     clearInterval(interval);
     // turn off event handlers
     $(document).off();
-    start = false;
   }
   function handleEndGame () {
     if (p1Score === 10 || p2Score === 10) {
