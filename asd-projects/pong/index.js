@@ -23,6 +23,7 @@ function runProgram(){
   $('#endTextBox').hide();
   $("#endText").hide();
   $("#winText").hide();
+  $("#restartText").hide();
   //add game functions for ball speeding up and getting gradually smaller over time if no one is gaining points
 
   // Game Item Objects
@@ -188,6 +189,7 @@ function runProgram(){
     $('#p2Score').css('left', $('#p2Score').x);
     $('#endText').text('Congrats ' + decideWinner() + '!');
     $('#winText').text('You Won!');
+    $('#restartText').text('Reload to Play Again!');
     if (start === false) {
       $('#startText').text('Press SPACE to start.');
       $('#startText').css("left", BOARD_WIDTH / 2 - $('#startText').width() / 2);
@@ -210,6 +212,7 @@ function runProgram(){
     $('#endTextBox').show();
     $("#endText").show();
     $("#winText").show();
+    $("#restartText").show();
     // stop the interval timer
     clearInterval(interval);
     // turn off event handlers
