@@ -59,7 +59,7 @@ function runProgram(){
   by calling this function and executing the code inside.
   */
   function newFrame() {
-    gameText();
+    gameText(handleEndGame);
     scoring();
     reposGameItem(p1);
     reposGameItem(p2);
@@ -72,7 +72,6 @@ function runProgram(){
     boundBalls(ball);
     handleDoCollide(ball, p1);
     handleDoCollide(ball, p2);
-    handleEndGame();
   }
   
   /* 
@@ -180,7 +179,7 @@ function runProgram(){
       ball.height = ballHeight;
     }
   }
-  function gameText () {
+  function gameText (callback) {
     $('#p1Score').text('Player 1 Score: ' + p1Score);
     $('#p1Score').css('left', $('#p1Score').x);
     $('#p2Score').text('Player 2 Score: ' + p2Score);
@@ -193,6 +192,7 @@ function runProgram(){
       $("#startText").hide();
       $('#startTextBox').hide();
     }
+    callback();
   }
   function endGame() {
     // stop the interval timer
