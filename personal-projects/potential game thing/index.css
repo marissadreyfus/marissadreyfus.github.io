@@ -1,12 +1,24 @@
-.player {
-    display: block;
-    width: 10px;
-    height: 10px;
-    color: rgb(142, 185, 142);
+body {
+    background-color: rgb(37, 37, 82);
+}
+
+#player {
+    background-color: rgb(142, 185, 142);
+    width: 50px;
+    height: 50px;
     position: absolute;
     left: 0px;
-    top: 0px;
-    border: double;
-    border-width: 1px;
-    border-color: black;
+    top: 400px;
+    border: dotted;
+    border-width: 2px;
+    border-color: white;
+}
+
+#floor {
+    width: 1000px;
+    height: 100px;
+    position: absolute;
+    left: 0px;
+    top: 850px;
+    border: 2px dotted white;
 }

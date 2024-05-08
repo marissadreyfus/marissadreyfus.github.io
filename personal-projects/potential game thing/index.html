@@ -2,9 +2,35 @@
 <html>
     <head>
         <title>WIP - 2D platformer/RPG currently without a name</title>
+        <link rel="stylesheet" type="text/css" href="index.css">
+        <script src="jquery.min.js"></script>
+        <script src="index.js"></script>
     </head>
-    <body></body>
+    <body>
+        <div id='player'></div>
+        <div id='floor'></div>
+    </body>
 </html>
 <!--day 1 - March 13th, 2024: added index.html file. put a placeholder title w/ html & head-->
 <!--day 2 note: add climbing later on-->
-<!--day 2 - March 14th, 2024: added index.js (empty by the end of day 2) and index.css files. added '.player' to css as a placeholder graphic, does not move yet and is invisible. added body tag, currently empty.-->
+<!--day 2 - March 14th, 2024: added index.js (empty by the end of day 2) and index.css files. added '#player' to css as a placeholder graphic, does not move yet and is invisible. added body tag, currently empty.-->
+<!--day 3 - May 8th, 2024: didn't have much time to work on this whoops; debrief!
+    - fixed css so that now the player is listed with an id instead of a class
+    - added the player div because i forgot to do that
+    - added a background color (the white bg was blinding me)
+    - added keycodes
+    - added player obj into index.js, **will make reusable later on in this debrief, edit this when done with that part**
+    - added $(document).ready(runProgram); for consistency's sake
+    - added the runProgram function so that the game actually functions
+    - borrowed some const variables from walker (fps and board height/width) - board height/width are unused for now but it's there for when i need it
+    - borrowed the css link loading thing, & the jquery and index.js script calling lines from walker
+    - changed player size from 10px to 50px each side bc i didn't realize how small 10px was and i need to see the player to playtest controls
+    - moved player down so i can test the jump when i add it, currently hardcoded but will make it resizeable when i get to that
+    - added the floor to divs & css, currently an id bc it probably won't end up changing or being reused but if needed i'll change to a class, css is a bunch of placeholders
+    - adjusted player y to test gravity when i add it & changed player border to white so i can see it
+    - added newFrame to js
+    - borrowed the one-time setup from walker js so the game functions
+    - borrowed the endGame function just in case i decide to use it (probably won't until i add actual hazards)
+
+    **PUSHED!**
+-->
