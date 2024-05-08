@@ -7,21 +7,31 @@
         <script src="index.js"></script>
     </head>
     <body>
-        <div id='player'></div>
+        <div id='gamma'></div>
         <div id='floor'></div>
     </body>
 </html>
-<!--day 1 - March 13th, 2024: added index.html file. put a placeholder title w/ html & head-->
+<!--day 1 - March 13th, 2024: 
+    - added index.html file
+    - put a placeholder title w/ html & head
+-->
 <!--day 2 note: add climbing later on
     - note from May 8th, 2024 - setup is there now! still not coded as of now but pseudocode is all written in handleKeyDown and handleKeyUp
+    - note 2 from May 8th, 2024 - no way of testing yet but code is written
 -->
-<!--day 2 - March 14th, 2024: added index.js (empty by the end of day 2) and index.css files. added '#player' to css as a placeholder graphic, does not move yet and is invisible. added body tag, currently empty.-->
-<!--day 3 - May 8th, 2024: didn't have much time to work on this whoops; debrief!
+<!--day 2 - March 14th, 2024: 
+    - added index.js and index.css files
+    - added '.player' to css as a placeholder graphic, does not move yet and is invisible
+        - (UPDATE: '#player' now, as of May 8th, 2024 at around 10:30 AM i didn't record this immediately, still no movement but can be seen)
+        - (UPDATE 2: '#gamma' now, as of May 8th, 2024 at 2:31 PM)
+    - added body tag
+    -->
+<!--day 3 - May 8th, 2024: didn't have much time to work on this whoops
     - fixed css so that now the player is listed with an id instead of a class
     - added the player div because i forgot to do that
     - added a background color (the white bg was blinding me)
     - added keycodes
-    - added player obj into index.js, **will make reusable later on in this debrief, edit this when done with that part**
+    - added player obj into index.js (UPDATE: renamed gamma bc i finally named the character)
     - added $(document).ready(runProgram); for consistency's sake
     - added the runProgram function so that the game actually functions
     - borrowed some const variables from walker (fps and board height/width) - board height/width are unused for now but it's there for when i need it
@@ -40,5 +50,17 @@
         - didn't realize i needed the jquery library, that's added now and it works
     - setup for the handleKeyDown and handleKeyUp functions, still does nothing bc i'm gonna change the player function but the if conditions are there as well as some pseudocode for how it'll function when i actually code it
 
+    **PUSHED!**
+
+    - finally decided on a name for the player: Gamma! like the greek letter, & also "In the system of Greek numerals it has a value of 3" i'm gonna use the number 3 a lot in reference to the character now i'm so normal about this
+        - oh yeah and i adjusted the css, html div, and player obj to be named gamma instead
+    - added isClimbing for the keyup keydown functions to work, automatically set to false but will have a helper function to set it to true whenever i add that
+        - i have no way to playtest this yet but it's there for when i need it
+    - save for climbing being functional & jumping/crouching, finished handleKeyDown
+        - will do the jump tomorrow with help from youtube probably, crouching might have to wait tho
+    - similarly to handleKeyDown, finished handleKeyUp for everything that doesn't involve jumping climbing or crouching
+    - currently no way to playtest this bc i haven't made the helper functions to reposition and redraw gamma, but it's basically the same as every other time i've done it so it probably works
+    - probably gonna start on a rough traditional sketch for the sprite sheet tonight or tomorrow, idk how to implement a sprite sheet but that's what youtube is for!
+    
     **PUSHED!**
 -->
