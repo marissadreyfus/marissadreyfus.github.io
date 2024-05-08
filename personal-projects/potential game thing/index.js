@@ -13,7 +13,7 @@ function runProgram () {
         DOWN: 40,
         KILL: 82,
     }
-    var playerWithoutNameCurrently = {
+    var player = {
         x: 0,
         y: 0,
         speedX: 0,
@@ -21,21 +21,56 @@ function runProgram () {
         width: $('#player').width(),
         height: $('#player').height(),
     }
+
+    //one-time setup stuff//
+
     var interval = setInterval(newFrame, FRAMES_PER_SECOND_INTERVAL);
     $(document).on('keydown', handleKeyDown);
     $(document).on('keyup', handleKeyUp);
 
+    //new frame function//
+
     function newFrame () {
 
     }
-    //HELPER FUNCTIONS//
-    function handleKeyDown () {
-
-    }
-    function handleKeyUp () {
-
-    }
     
+    //EVENT FUNCTIONS//
+
+    function handleKeyDown (event) {
+        if (event.which === KEYCODES.LEFT) {
+            //move left
+        }
+        if (event.which === KEYCODES.RIGHT) {
+            //move right
+        }
+        if (event.which === KEYCODES.UP) {
+            //if x collides with x of something to climb (ladder?), climb
+            //else, jump
+        }
+        if (event.which === KEYCODES.DOWN) {
+            //if on laddar, climb down
+            //else, crouch
+        }
+        if (event.which === KEYCODES.ENTER) {
+            //plans to add a pause feature w/ enter, or maybe an inventory if i feel like doing that instead idk, will figure out later
+        }
+    }
+    function handleKeyUp (event) {
+        if (event.which === KEYCODES.LEFT || event.which === KEYCODES.RIGHT) {
+            //set speedX to 0
+        }
+        if (event.which === KEYCODES.UP/*or certain yval above current platform reached*/) {
+            //if on ladder, just stop moving
+            //else, add gravity until floor or platform contact
+        }
+        if (event.which === KEYCODES.DOWN) {
+            //if on ladder, stop moving
+            //else, uncrouch
+        }
+    }
+
+    //HELPER FUNCTIONS//
+
     function endGame() {
         clearInterval(interval);
         location.reload();
