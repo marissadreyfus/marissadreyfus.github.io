@@ -1,8 +1,8 @@
 $(document).ready(runProgram);
 
 function runProgram () {
-    var FRAME_RATE = 60; //fps goes crazy//
-    var FRAMES_PER_SECOND_INTERVAL = 1000 / FRAME_RATE;
+    const FRAME_RATE = 60; //fps goes crazy//
+    const FRAMES_PER_SECOND_INTERVAL = 1000 / FRAME_RATE;
     //var BOARD_WIDTH = $("#board").width(); //sets the board width//
     //var BOARD_HEIGHT = $("#board").height(); //sets the board height//
     var isClimbing = false;
@@ -15,13 +15,16 @@ function runProgram () {
         KILL: 82,
     }
     var gamma = {
+        id: '#gamma',
         x: 0,
-        y: 0,
+        y: 500,
         speedX: 0,
         speedY: 0,
         width: $('#gamma').width(),
         height: $('#gamma').height(),
     }
+    var floorY = $('#floor').y;
+    var maxJumpHeight = 50;
 
     //one-time setup stuff//
 
@@ -32,7 +35,8 @@ function runProgram () {
     //new frame function//
 
     function newFrame () {
-
+        repos(gamma);
+        redraw(gamma);
     }
     
     //EVENT FUNCTIONS//
@@ -51,6 +55,12 @@ function runProgram () {
             //else, jump
             if (isClimbing) {
                 gamma.speedY = -3;
+            } else {
+                if (gamma.y > floorY - maxJumpHeight) {
+                    gamma.speedY = 3
+                } else {
+                    gamma.speedY = -3;
+                }
             }
         }
         if (event.which === KEYCODES.DOWN) {
@@ -58,7 +68,9 @@ function runProgram () {
             //else, crouch
             if (isClimbing) {
                 gamma.speedY = 3;
-            }
+            } //else {
+                
+            //}
         }
         if (event.which === KEYCODES.ENTER) {
             //plans to add a pause feature w/ enter, or maybe an inventory if i feel like doing that instead idk, will figure out later
@@ -69,21 +81,41 @@ function runProgram () {
             //set speedX to 0
             gamma.speedX = 0;
         }
-        if (event.which === KEYCODES.UP/*or certain yval above current platform reached*/) {
+        if (event.which === KEYCODES.UP /*|| gamma.y < floorY*/) {
             //if on ladder, just stop moving
             //else, add gravity until floor or platform contact
             if (isClimbing) {
                 gamma.speedY = 0;
+            } else {
+                if (gamma.y < floorY) {
+                    gamma.speedY = 3;
+                } else {
+                    gamma.speedY = 0;
+                }
             }
         }
         if (event.which === KEYCODES.DOWN) {
             //if on ladder, stop moving
             //else, uncrouch
-            gamma.speedY = 0;
+            if (isClimbing) {
+                gamma.speedY = 0;
+            } //else {
+
+            //}
         }
     }
 
     //HELPER FUNCTIONS//
+
+    function repos (obj) {
+        obj.x += obj.speedX;
+        obj.y += obj.speedY;
+    }
+
+    function redraw (obj) {
+        $(obj.id).css('left', obj.x);
+        $(obj.id).css('top', obj.y);
+    }
 
     function endGame() {
         clearInterval(interval);
