@@ -3,9 +3,10 @@ $(document).ready(runProgram);
 function runProgram () {
     const FRAME_RATE = 60; //fps goes crazy//
     const FRAMES_PER_SECOND_INTERVAL = 1000 / FRAME_RATE;
+    const gravity = 0.5; // how much is subtracted from speedY each frame
     //var BOARD_WIDTH = $("#board").width(); //sets the board width//
     //var BOARD_HEIGHT = $("#board").height(); //sets the board height//
-    var isClimbing = false;
+    var isClimbing = true; //will not default to true permenantly, this is for until i can get jump and crouch working//
     var KEYCODES = {
         ENTER: 13,
         LEFT: 37,
@@ -25,6 +26,7 @@ function runProgram () {
     }
     var floorY = $('#floor').y;
     var maxJumpHeight = 50;
+    var aboveTheFloor = false;
 
     //one-time setup stuff//
 
@@ -37,6 +39,7 @@ function runProgram () {
     function newFrame () {
         repos(gamma);
         redraw(gamma);
+        handleAboveFloor();
     }
     
     //EVENT FUNCTIONS//
@@ -57,9 +60,9 @@ function runProgram () {
                 gamma.speedY = -3;
             } else {
                 if (gamma.y > floorY - maxJumpHeight) {
-                    gamma.speedY = 3
+                    gamma.speedY = -3
                 } else {
-                    gamma.speedY = -3;
+                    handleGravity();
                 }
             }
         }
@@ -81,17 +84,13 @@ function runProgram () {
             //set speedX to 0
             gamma.speedX = 0;
         }
-        if (event.which === KEYCODES.UP /*|| gamma.y < floorY*/) {
+        if (event.which === KEYCODES.UP) {
             //if on ladder, just stop moving
             //else, add gravity until floor or platform contact
             if (isClimbing) {
                 gamma.speedY = 0;
             } else {
-                if (gamma.y < floorY) {
-                    gamma.speedY = 3;
-                } else {
-                    gamma.speedY = 0;
-                }
+                handleGravity();
             }
         }
         if (event.which === KEYCODES.DOWN) {
@@ -111,10 +110,19 @@ function runProgram () {
         obj.x += obj.speedX;
         obj.y += obj.speedY;
     }
-
     function redraw (obj) {
         $(obj.id).css('left', obj.x);
         $(obj.id).css('top', obj.y);
+    }
+    function handleAboveFloor () {
+        if (gamma.y < floorY) {
+            aboveTheFloor = true;
+        }
+    }
+    function handleGravity () {
+        if (aboveTheFloor === true) {
+            gamma.speedY = gamma.speedY + gravity;
+        }
     }
 
     function endGame() {
@@ -122,4 +130,5 @@ function runProgram () {
         location.reload();
         $(document).off();
       }
+    
 }
